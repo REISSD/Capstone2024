@@ -57,7 +57,6 @@
             <p>Test product</p>
             <p>$129.99</p>
         </div>
-
     </div>
 </body>
 </html>
