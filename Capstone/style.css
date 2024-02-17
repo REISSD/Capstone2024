@@ -46,6 +46,30 @@ body{
     width: 240px;
 }
 
+/*About us style*/
+.aboutus {
+    background-color: rgb(160, 215, 235);
+    border-radius: 35px;
+    width: 75%;
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+.aboutH {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-top: 20px;
+}
+.aboutP {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+
+
 /*Header Styles*/
 header {
     margin: 0;
@@ -128,4 +152,48 @@ footer{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 10px 0 30px;
+}/*body{
+    text-align: center;
 }
+.btn{
+    color:#000000;
+    background:rgba(0, 132, 255, 0.5);
+    padding:10px 20px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+
+.btn:hover{
+    border:none;
+    background:rgb(107, 168, 192);
+    padding:15px 20px;
+    color:#1b1b1b;
+}
+
+.topDiv {
+    background-color: rgb(182, 226, 243);
+    width: 55%;
+    border-radius: 10px;
+    margin: auto;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+div{
+    background-color: rgb(182, 226, 243);
+    width: 75%;
+    border-radius: 10px;
+    margin: auto;
+}
+
+img{
+    width: 300px;
+}
+
+.productList{
+    display: inline-flex;
+}
+*/
+
+
+
