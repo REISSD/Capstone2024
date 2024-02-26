@@ -178,10 +178,10 @@ input[name="search" i] {
 /*signup style*/
 .signup{
     margin-top: 10px;
-    padding-left: 33%;
-    padding-right: 38%;
+    padding-left: 30%;
+    padding-right: 40%;
     padding-top: 10%;
-
+    text-align: right;
 }
 
 /*Footer Styles*/
