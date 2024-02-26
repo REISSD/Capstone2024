@@ -136,7 +136,7 @@ header {
     font-weight: bold;
     padding: 0 !important;
 }
-input[type="text" i] {
+input[name="search" i] {
     float: right;
     padding: 8px 20px;
     border-radius: 50px;
