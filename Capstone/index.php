@@ -11,11 +11,11 @@
         define('DB_USERNAME', 'root');
         define('DB_PASSWORD', '');
         define('DB_NAME', 'capstone');
-        //$conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+        $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-        //if ($conn->connect_error) {
-        //    die("Connection failed: " . $conn->connect_error);
-        //}
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
     ?>
 </head>
 
@@ -39,7 +39,7 @@
                 <a href="cart.php">Cart</a>
             </div>
         </div>
-    </header>
+</header>
     <body>   
         <!-- testProducts -->
         <div class="body-image body-welcome">
@@ -51,6 +51,33 @@
             <h1>Most Popular Products</h1>
         </div>
         <div class="product-list">
+            <?php
+                // fish
+                $sql = "SELECT * FROM fishs";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc()) {    
+                    echo "<div class='product'>
+                        <div class='product-text'>
+                        <p>" . $row['Name'] . "</p>
+                        <p>" . $row['Cost'] . "</p>
+                        </div></div>";
+                }
+
+                // tanks
+                $sql = "SELECT * FROM tanks";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc()) {    
+                    echo "<div class='product'>
+                        <div class='product-text'>
+                        <p>" . $row['Name'] . "</p>
+                        <p>" . $row['Cost'] . "</p>
+                        <p>" . $row['Length'] . "</p>
+                        <p>" . $row['Width'] . "</p>
+                        <p>" . $row['Height'] . "</p>
+                        <p>" . $row['Measurement'] . "</p>
+                        </div></div>";
+                }
+            ?>
             <div class="product">
                 <p><img src="./graphic/fish/fish1.jpg" alt="testProduct" class="product-img"/></p>
                 <div class="product-text">
