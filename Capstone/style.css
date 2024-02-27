@@ -136,7 +136,7 @@ header {
     font-weight: bold;
     padding: 0 !important;
 }
-input[type="text" i] {
+input[name="search" i] {
     float: right;
     padding: 8px 20px;
     border-radius: 50px;
@@ -178,10 +178,10 @@ input[type="text" i] {
 /*signup style*/
 .signup{
     margin-top: 10px;
-    padding-left: 33%;
-    padding-right: 38%;
+    padding-left: 30%;
+    padding-right: 40%;
     padding-top: 10%;
-
+    text-align: right;
 }
 
 /*Footer Styles*/
