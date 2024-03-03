@@ -194,11 +194,13 @@ input[name="search" i] {
 
 /*signup style*/
 .signup{
-    margin-top: 10px;
-    padding-left: 30%;
-    padding-right: 40%;
-    padding-top: 10%;
-    text-align: right;
+        background-color: white;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 40%;
+        margin-right: 40%;
+        width: 455px;
+        height: 804px;
 }
 
 /*Footer Styles*/
