@@ -42,10 +42,10 @@
     </header>
     <body>
     <div class="signup">
-    <form action="/signup.php">
+    <form action="signup.php">
             <label for="fname">
             First Name
-            <input type="text" id="fname" name="firstname" placeholder="Your first name..">
+            <input type="text" id="fname" name="signup" placeholder="Your first name..">
             </label>
         <br> <br>
         <label for="lname">Last Name
