@@ -59,6 +59,9 @@ CloseCon($conn);
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">
                 </div>
+                <div>
+                <footer>Already a member? <a href="login.php">Login here</a></footer>
+                </div>
         </div>
     </form>
     </div>
