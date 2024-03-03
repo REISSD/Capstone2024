@@ -48,30 +48,28 @@
             <input type="text" id="fname" name="signup" placeholder="Your first name..">
             </label>
         
-        <label for="lname">Last Name
-        <input type="text" id="lname" name="signup" placeholder="Your last name..">
-        </label>
-        <br>  <br>
-        <label for="email">Email
-
-        <input type="text" id="email" name="signup" placeholder="Your Email">
-        </label>
-        <br> <br>
-        <label for="add">Street Address
-
-        <input type="text" id="add" name="signup" placeholder="Your Address">
-        </label>
-        <br> <br>
-        <label for="zip">Zipcode
-
-        <input type="text" id="zip" name="signup" placeholder="Your Zip">
-        </label>
-        <br> <br>
-        <label for="gender">Gender
-
-            <input type="text" id="gender" name="signup" placeholder="Your Gender">
-            </label>
-            <br>  <br>
+            <div>
+                    <h1 class="login-text">Hello! New to Aqua Marine?</h1>
+                    <h3 class="login-text">Register Here.</h3>
+                </div>
+                <div>
+                    <input type="text" placeholder="First Name" name="signup">
+                </div>
+                <div>
+                    <input type="text" placeholder="Last Name" name="signup">
+                </div>
+                <div>
+                    <input type="text" placeholder="Email" name="signup">
+                </div>
+                <div>
+                    <input type="text" placeholder="Address" name="signup">
+                </div>
+                <div>
+                    <input type="text" placeholder="Zipcode" name="signup">
+                </div>
+                <div>
+                    <input type="submit" placeholder="Submit" name="submit">
+                </div>
 
         <div class="row">
         <input type="submit" value="Submit">
