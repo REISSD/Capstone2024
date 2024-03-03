@@ -68,6 +68,10 @@
         </div>
     </form>
     </div>
-
     </body>
+    <footer>
+        <div class="footer">
+            <p>© 2024, Aqua Marine.com, Inc. or its affiliates</p>
+        </div>
+    </footer>
 </html>
