@@ -1,3 +1,9 @@
+<?php
+include 'db_connection.php';
+$conn = OpenCon();
+echo "Connected Successfully";
+CloseCon($conn);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,12 +11,7 @@
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
     </head>
-<?php
-include 'db_connection.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-CloseCon($conn);
-?>
+
     <header>
         <div class = "header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
