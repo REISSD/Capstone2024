@@ -49,27 +49,27 @@
             </label>
         <br> <br>
         <label for="lname">Last Name
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <input type="text" id="lname" name="signup" placeholder="Your last name..">
         </label>
         <br>  <br>
         <label for="email">Email
 
-        <input type="text" id="email" name="email" placeholder="Your Email">
+        <input type="text" id="email" name="signup" placeholder="Your Email">
         </label>
         <br> <br>
         <label for="add">Street Address
 
-        <input type="text" id="add" name="add" placeholder="Your Address">
+        <input type="text" id="add" name="signup" placeholder="Your Address">
         </label>
         <br> <br>
         <label for="zip">Zipcode
 
-        <input type="text" id="zip" name="zip" placeholder="Your Zip">
+        <input type="text" id="zip" name="signup" placeholder="Your Zip">
         </label>
         <br> <br>
         <label for="gender">Gender
 
-            <input type="text" id="gender" name="gender" placeholder="Your Gender">
+            <input type="text" id="gender" name="signup" placeholder="Your Gender">
             </label>
             <br>  <br>
 
