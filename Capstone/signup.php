@@ -43,11 +43,6 @@
     <body>
     <div class="signup">
     <form action="signup.php">
-            <label for="fname">
-            First Name
-            <input type="text" id="fname" name="signup" placeholder="Your first name..">
-            </label>
-        
             <div>
                     <h1 class="login-text">Hello! New to Aqua Marine?</h1>
                     <h3 class="login-text">Register Here.</h3>
