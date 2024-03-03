@@ -47,7 +47,7 @@
             First Name
             <input type="text" id="fname" name="signup" placeholder="Your first name..">
             </label>
-        <br> <br>
+        
         <label for="lname">Last Name
         <input type="text" id="lname" name="signup" placeholder="Your last name..">
         </label>
