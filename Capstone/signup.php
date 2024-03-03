@@ -4,18 +4,6 @@
         <meta charset="UTF-8">
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        
-        <?php
-        define('DB_SERVER', 'localhost');
-        define('DB_USERNAME', 'root');
-        define('DB_PASSWORD', 'mysql');
-        //define('DB_NAME', 'capstonefish');
-        $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD);
-
-        if ($conn->connect_error) {
-            die("Connection failed: " .  $conn->connect_error);
-        }
-    ?>
     
     </head>
     <header>
