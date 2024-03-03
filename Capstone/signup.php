@@ -65,9 +65,6 @@
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">
                 </div>
-
-        <div class="row">
-        <input type="submit" value="Submit">
         </div>
     </form>
     </div>
