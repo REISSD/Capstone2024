@@ -31,7 +31,7 @@
             <form action="loginForm.php">
                 <div>
                     <h1 class="login-text">Hello</h1>
-                    <h3 class="login-text">Sigh in to Aqua Marine</h3>
+                    <h3 class="login-text">Sign in to Aqua Marine</h3>
                 </div>
                 <div>
                     <input type="text" placeholder="Email" name="login">
