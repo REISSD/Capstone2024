@@ -203,6 +203,18 @@ input[name="search" i] {
         height: 804px;
 }
 
+.signup-text {
+    text-align: center;
+    padding: 10px;
+}
+input[name="signup" i] { 
+    height: 50px;
+    margin: 50px 50px 10px 50px;
+    padding-left: 20px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+
 /*Footer Styles*/
 footer{
     background-color: rgb(182, 226, 243);
