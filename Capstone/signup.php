@@ -60,7 +60,7 @@ CloseCon($conn);
                     <input type="submit" placeholder="Submit" name="submit">
                 </div>
                 <div>
-                <h3 Already a member? <a href="login.php">Login here</a></h3>
+                <h3 class="login-text">Already a member? <a href="login.php">Login here</a></h3>
                 </div>
         </div>
     </form>
