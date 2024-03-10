@@ -1,9 +1,4 @@
-<?php
-include 'db_connection.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-CloseCon($conn);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,6 +8,12 @@ CloseCon($conn);
     </head>
 
     <header>
+<?php
+include 'db_connection.php';
+$conn = OpenCon();
+echo "Connected Successfully";
+CloseCon($conn);
+?>
         <div class = "header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
@@ -41,29 +42,28 @@ CloseCon($conn);
                     <h1 class="login-text">Hello! New to Aqua Marine?</h1>
                     <h3 class="login-text">Register Here.</h3>
                 </div>
+            <form action="insert.php" method="post">
                 <div>
-                    <input type="text" placeholder="First Name" name="signup">
-                </div>
-                <div>
-                    <input type="text" placeholder="Last Name" name="signup">
+                    <input type="text" placeholder="User Name" name="signup">
                 </div>
                 <div>
                     <input type="text" placeholder="Email" name="signup">
                 </div>
                 <div>
-                    <input type="text" placeholder="Address" name="signup">
+                    <input type="text" placeholder="Password" name="signup">
                 </div>
                 <div>
-                    <input type="text" placeholder="Zipcode" name="signup">
+                    <input type="text" placeholder="Address" name="signup">
                 </div>
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">
                 </div>
+            </form>
                 <div>
                 <h3 class="login-text">Already a member? <a href="login.php">Login here</a></h3>
                 </div>
         </div>
-    </form>
+    
     </div>
     </body>
     <footer>
