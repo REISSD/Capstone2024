@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -44,16 +43,16 @@ CloseCon($conn);
                 </div>
             <form action="insert.php" method="post">
                 <div>
-                    <input type="text" placeholder="User Name" name="signup">
+                    <input type="text" placeholder="User Name" name="signup" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Email" name="signup">
+                    <input type="text" placeholder="Email" name="signup" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Password" name="signup">
+                    <input type="text" placeholder="Password" name="signup" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Address" name="signup">
+                    <input type="text" placeholder="Address" name="signup" required>
                 </div>
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">

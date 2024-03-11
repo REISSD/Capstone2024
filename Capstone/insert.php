@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -8,25 +10,24 @@
 <body>
 
 		<?php
-		
-	
-
-
 		include 'db_connection.php';
 		$conn = OpenCon();
 		echo "Connected Successfully";
 		
-		
-		// Taking all 4 values from the form data(input)
-		$userName = $_REQUEST['userName'];
-		$email = $_REQUEST['email'];
-		$password = $_REQUEST['password'];
-		$address = $_REQUEST['address'];
-		
+		//if(isset($_POST['userName']) && isset($_POST['email']) && isset($_POST['password']) 
+		//&& isset($_POST['address']) && !empty($_POST['userName']) && !empty($_POST['email']) 
+	   //&& !empty($_POST['password']) && !empty($_POST['address']) ){
+		 //Taking all 4 values from the form data(input)
+		$userName = $_GET['userName'];
+		$email = $_GET['email'];
+		$password = $_GET['password'];
+		$address = $_GET['address'];
+		//}
 		
 		// Performing insert query execution
-		$sql = "INSERT INTO user (userName, email, password, address) VALUES ('$userName', 
-			'$email','$password','$address')";
+		$sql = "INSERT INTO user (userName, email, password, address) 
+				  VALUES ('$userName','$email','$password','$address')";
+		
 		
 		if(mysqli_query($conn, $sql)){
 			echo "<h3>data stored in a database successfully."
@@ -39,6 +40,10 @@
 			echo "ERROR: Hush! Sorry $sql. "
 				. mysqli_error($conn);
 		}
+	
+	
+	
+	
 		var_dump($_POST);
 		// Close connection
 		//mysqli_close($conn);
