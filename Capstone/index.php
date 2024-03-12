@@ -53,59 +53,42 @@
         <div class="product-list">
             <?php
                 // fish
-                $sql = "SELECT * FROM fishs";
+                $sql = "SELECT * FROM fishs WHERE Fishs_id > 4 ";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<div class='product'>
+                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                        <img src='./graphic/fish/" . $row['Name'] . ".jpg' alt='fish' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
-                        <p>" . $row['Cost'] . "</p>
-                        </div></div>";
+                        <p>$" . $row['Cost'] . "</p>
+                        </div></div></a>";
                 }
 
                 // tanks
-                $sql = "SELECT * FROM tanks";
+                $sql = "SELECT * FROM tanks WHERE Tanks_id = 3";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<div class='product'>
+                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                        <img src='./graphic/tanks/" . $row['Name'] . ".jpg' alt='tank' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
-                        <p>" . $row['Cost'] . "</p>
-                        <p>" . $row['Length'] . "</p>
-                        <p>" . $row['Width'] . "</p>
-                        <p>" . $row['Height'] . "</p>
+                        <p>$" . $row['Cost'] . "</p>
+                        <p>" . $row['Length'] . 'x' . $row['Width'] . 'x' . $row['Height'] . "</p>
                         <p>" . $row['Measurement'] . "</p>
-                        </div></div>";
+                        </div></div></a>";
+                }
+
+                $sql = "SELECT * FROM plants WHERE Plants_id = 5";
+                $result = $conn->query($sql);
+                while($row = $result->fetch_assoc()) {    
+                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                        <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
+                        <div class='product-text'>
+                        <p>" . $row['Name'] . "</p>
+                        <p>$" . $row['Cost'] . "</p>
+                        </div></div></a>";
                 }
             ?>
-            <div class="product">
-                <p><img src="./graphic/fish/fish1.jpg" alt="testProduct" class="product-img"/></p>
-                <div class="product-text">
-                    <p>Test product</p>
-                    <p>$12.99</p>
-                </div>
-            </div>   
-            <div class="product">
-                <p><img src="./graphic/tanks/tank3.jpg" alt="testProduct" class="product-img"/></p>
-                <div class="product-text">
-                    <p>Test product</p>
-                    <p>$129.99</p>
-                </div>
-            </div>
-            <div class="product">
-                <p><img src="./graphic/tanks/tank3.jpg" alt="testProduct" class="product-img"/></p>
-                <div class="product-text">
-                    <p>Test product</p>
-                    <p>$129.99</p>
-                </div>
-            </div>
-            <div class="product">
-                <p><img src="./graphic/tanks/tank3.jpg" alt="testProduct" class="product-img"/></p>
-                <div class="product-text">
-                    <p>Test product</p>
-                    <p>$129.99</p>
-                </div>
-            </div>
         </div>
     </body>
     <footer>

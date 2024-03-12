@@ -22,11 +22,15 @@
 		$email = $_GET['email'];
 		$password = $_GET['password'];
 		$address = $_GET['address'];
+		// get name to
 		//}
 		
+		// needs fixing
+		// i think we should insert into members but that table needs name and address added to it in order to insert from the form
 		// Performing insert query execution
-		$sql = "INSERT INTO user (userName, email, password, address) 
-				  VALUES ('$userName','$email','$password','$address')";
+		// (Name, Username, email, pass, address)
+		$sql = "INSERT INTO members (userName, email, password) 
+				  VALUES ('$userName','$email','$password')";
 		
 		
 		if(mysqli_query($conn, $sql)){

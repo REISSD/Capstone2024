@@ -41,6 +41,9 @@
         </div>
 </header>
     <body>   
+        <div class="product-text">
+            <h1>Products List</h1>
+        </div>
         <div class="product-list">
             <?php
                 // fish
@@ -74,6 +77,7 @@
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
                     echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                        <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
                         <p>$" . $row['Cost'] . "</p>
@@ -85,6 +89,7 @@
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
                     echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                        <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
                         <p>$" . $row['Cost'] . "</p>

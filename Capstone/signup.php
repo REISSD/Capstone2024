@@ -43,16 +43,16 @@ CloseCon($conn);
                 </div>
             <form action="insert.php" method="post">
                 <div>
-                    <input type="text" placeholder="User Name" name="signup" required>
+                    <input type="text" placeholder="User Name" name="userName" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Email" name="signup" required>
+                    <input type="text" placeholder="Email" name="email" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Password" name="signup" required>
+                    <input type="text" placeholder="Password" name="password" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Address" name="signup" required>
+                    <input type="text" placeholder="Address" name="address" required>
                 </div>
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">
