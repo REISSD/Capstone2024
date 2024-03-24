@@ -4,6 +4,22 @@
         <meta charset="UTF-8">
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
+        <style> 
+input[type=text] {
+    height: 50px;
+    margin: 50px 50px 10px 50px;
+    padding-left: 20px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+input[type=password] {
+    height: 50px;
+    margin: 50px 50px 10px 50px;
+    padding-left: 20px;
+    border-radius: 5px;
+    font-size: 25px;
+}
+</style>
     <header>
 <?php
 include 'db_connection.php';

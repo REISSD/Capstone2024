@@ -194,59 +194,7 @@ input[name="search" i] {
 
 
 /*signup style*/
-.signup{
-    background-color: white;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    margin-left: 40%;
-    margin-right: 40%;
-    width: 455px;
-    height: 804px;
-}
-.signup-text {
-    text-align: center;
-    padding: 10px;
-}
-input[type="text" i] { 
-    height: 50px;
-    margin: 50px 50px 10px 50px;
-    padding-left: 20px;
-    border-radius: 5px;
-    font-size: 25px;
-}
-input[name="submit" i] { 
-    width: 327px;
-    height: 50px;
-    margin: 50px 50px 10px 50px;
-    border-radius: 5px;
-    font-size: 25px;
-    text-align: center;
-    color: white;
-    background-color: rgb(15, 15, 128);
-}
 
-/*
-.name{
-        background-color: white;
-        margin-top: 30px;
-        margin-bottom: 30px;
-        margin-left: 40%;
-        margin-right: 40%;
-        width: 455px;
-        height: 804px;
-}
-
-.signup-text {
-    text-align: center;
-    padding: 10px;
-}
-input[name="signup"] { 
-    height: 50px;
-    margin: 50px 50px 10px 50px;
-    padding-left: 20px;
-    border-radius: 5px;
-    font-size: 25px;
-}*/
 
 /*Footer Styles*/
 footer{
