@@ -4,14 +4,9 @@
         <meta charset="UTF-8">
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-    </head>
-
     <header>
 <?php
 include 'db_connection.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-CloseCon($conn);
 ?>
         <div class = "header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
@@ -36,20 +31,17 @@ CloseCon($conn);
     </header>
     <body>
     <div class="signup">
-    <form action="signup.php">
+    <form method="POST" action="insert.php">
             <div>
                     <h1 class="login-text">Hello! New to Aqua Marine?</h1>
                     <h3 class="login-text">Register Here.</h3>
                 </div>
-            <form action="insert.php" method="post">
-                <div>
-                    <input type="text" placeholder="User Name" name="userName" required>
-                </div>
+                    <input type="text" name="name" placeholder="Name"  required>
                 <div>
                     <input type="text" placeholder="Email" name="email" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Password" name="password" required>
+                    <input type="password" class="form-control" placeholder="Password" name="password" required>
                 </div>
                 <div>
                     <input type="text" placeholder="Address" name="address" required>
