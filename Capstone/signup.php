@@ -7,24 +7,43 @@
         <style> 
 input[type=text] {
     height: 50px;
-    margin: 50px 50px 10px 50px;
+    margin: 10px 50px 10px 50px;
     padding-left: 20px;
     border-radius: 5px;
     font-size: 25px;
 }
 input[type=password] {
     height: 50px;
-    margin: 50px 50px 10px 50px;
+    margin: 10px 50px 10px 50px;
     padding-left: 20px;
     border-radius: 5px;
     font-size: 25px;
 }
+input[name="search" i] {
+    float: right;
+    padding: 6px 20px;
+    border-radius: 50px;
+    color: black;
+    background-color: rgb(132, 197, 223);
+    border-color: white;
+    margin-right: 30px;
+    border: 0;
+}
+.signup {
+    background-color: white;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 455px;
+    height: 804px;
+}
 </style>
-    <header>
 <?php
 include 'db_connection.php';
 ?>
-        <div class = "header">
+    <header>
+        <div class="header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
                 <a>Aqua Marine</a>
@@ -43,7 +62,6 @@ include 'db_connection.php';
                 <a href="cart.php">Cart</a>
             </div>
         </div>
-    
     </header>
     <body>
     <div class="signup">
