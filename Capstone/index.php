@@ -56,7 +56,7 @@
                 $sql = "SELECT * FROM fishs WHERE Fishs_id > 4 ";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?fishID=" . $row['Fishs_id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/fish/" . $row['Name'] . ".jpg' alt='fish' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
@@ -68,7 +68,7 @@
                 $sql = "SELECT * FROM tanks WHERE Tanks_id = 3";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?tankID=" . $row['Tanks_id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/tanks/" . $row['Name'] . ".jpg' alt='tank' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
@@ -81,7 +81,7 @@
                 $sql = "SELECT * FROM plants WHERE Plants_id = 5";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?plantID=" . $row['Plants_id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>

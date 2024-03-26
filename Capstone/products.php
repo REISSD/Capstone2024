@@ -9,7 +9,7 @@
     //db
         define('DB_SERVER', 'localhost');
         define('DB_USERNAME', 'root');
-        define('DB_PASSWORD', '');
+        define('DB_PASSWORD', 'mysql');
         define('DB_NAME', 'capstone');
         $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -50,7 +50,7 @@
                 $sql = "SELECT * FROM fishs";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?fishID=" . $row['Fishs_id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/fish/" . $row['Name'] . ".jpg' alt='fish' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
@@ -62,7 +62,7 @@
                 $sql = "SELECT * FROM tanks";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?tankID=" . $row['Tanks_id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/tanks/" . $row['Name'] . ".jpg' alt='tank' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
@@ -76,7 +76,7 @@
                 $sql = "SELECT * FROM decorations";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?decorID=" . $row['Decorations_Id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
@@ -88,7 +88,7 @@
                 $sql = "SELECT * FROM plants";
                 $result = $conn->query($sql);
                 while($row = $result->fetch_assoc()) {    
-                    echo "<a href='" . $row['Name'] . ".html' class='product-link'><div class='product'>
+                    echo "<a href='singleProduct.php?plantID=" . $row['Plants_id'] . "' class='product-link'><div class='product'>
                         <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
                         <div class='product-text'>
                         <p>" . $row['Name'] . "</p>
