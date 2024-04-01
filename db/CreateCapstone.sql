@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 03, 2024 at 04:34 AM
+-- Generation Time: Mar 31, 2024 at 04:36 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -59,19 +59,20 @@ CREATE TABLE `comments` (
 CREATE TABLE `decorations` (
   `Decorations_Id` int NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
-  `Cost` float DEFAULT NULL
+  `Cost` float DEFAULT NULL,
+  `Decoration_comment_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `decorations`
 --
 
-INSERT INTO `decorations` (`Decorations_Id`, `Name`, `Cost`) VALUES
-(1, 'Rocks', 2.99),
-(2, 'Underwater Tree', 4.99),
-(3, 'SpongeBob house', 12.99),
-(4, 'Large Rocks', 4.99),
-(5, 'Hollow Rocks And Tree Set', 19.99);
+INSERT INTO `decorations` (`Decorations_Id`, `Name`, `Cost`, `Decoration_comment_id`) VALUES
+(1, 'Rocks', 2.99, NULL),
+(2, 'Underwater Tree', 4.99, NULL),
+(3, 'SpongeBob house', 12.99, NULL),
+(4, 'Large Rocks', 4.99, NULL),
+(5, 'Hollow Rocks And Tree Set', 19.99, NULL);
 
 -- --------------------------------------------------------
 
@@ -157,18 +158,19 @@ CREATE TABLE `incartproduct` (
 CREATE TABLE `members` (
   `Members_Id` int NOT NULL,
   `Name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `Username` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
   `Password` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
-  `Comment_id` int DEFAULT NULL
+  `Comment_id` int DEFAULT NULL,
+  `address` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `email` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`Members_Id`, `Name`, `Username`, `Password`, `Comment_id`) VALUES
-(1, 'James', 'JJmes', 'JJmes', NULL),
-(2, 'Sython', 'SS', 'SS', NULL);
+INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`, `email`) VALUES
+(1, 'James', 'JJmes', NULL, '123 James St', 'James@mail.vom'),
+(2, 'Sython', 'SS', NULL, '3452 Syth Street', 'Sython@mail.com');
 
 -- --------------------------------------------------------
 
@@ -277,7 +279,7 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `decorations`
   ADD PRIMARY KEY (`Decorations_Id`),
-  ADD UNIQUE KEY `Decorations_Id_UNIQUE` (`Decorations_Id`);
+  ADD KEY `Decorations_comment_Id_idx` (`Decoration_comment_id`) USING BTREE;
 
 --
 -- Indexes for table `fishs`
@@ -297,7 +299,6 @@ ALTER TABLE `guest`
 --
 ALTER TABLE `heaters`
   ADD PRIMARY KEY (`Heaters_id`),
-  ADD KEY `Comments_id_idx` (`Heater_comments_id`),
   ADD KEY `Heater_comments_id_idx` (`Heater_comments_id`);
 
 --
@@ -375,7 +376,7 @@ ALTER TABLE `incartproduct`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `Members_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Members_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
