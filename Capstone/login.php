@@ -23,12 +23,13 @@
                 <a href="login.php">Login</a>
                 <a href="orders.php">Orders</a>
                 <a href="cart.php">Cart</a>
+                <a href="profile.php">Profile</a>
             </div>
         </div>
     </header>
     <body>
         <div class="login">
-            <form action="loginForm.php">
+            <form action="loginConn.php">
                 <div>
                     <h1 class="login-text">Hello</h1>
                     <h3 class="login-text">Sign in to Aqua Marine</h3>
@@ -41,9 +42,13 @@
                 </div>
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">
+                    
                 </div>
-            </form>
-        </div>
+            </form> 
+            <div>
+                <h3 class="login-text">New Here? <a href="signup.php">Register Here</a></h3>
+                </div>
+            </div>
     </body>
     <footer>
         <div class="footer">

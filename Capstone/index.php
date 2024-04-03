@@ -9,7 +9,7 @@
     //db
         define('DB_SERVER', 'localhost');
         define('DB_USERNAME', 'root');
-        define('DB_PASSWORD', 'mysql');
+        define('DB_PASSWORD', '');
         define('DB_NAME', 'capstone');
         $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -37,6 +37,7 @@
                 <a href="login.php">Login</a>
                 <a href="orders.php">Orders</a>
                 <a href="cart.php">Cart</a>
+                <a href="profile.php">Profile</a>
             </div>
         </div>
 </header>

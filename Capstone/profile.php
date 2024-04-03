@@ -23,15 +23,16 @@
                 <a href="login.php">Login</a>
                 <a href="orders.php">Orders</a>
                 <a href="cart.php">Cart</a>
+                <a href="profile.php">Profile</a>
             </div>
         </div>
     </header>
     <body>
-        <div class="login">
-            <form action="loginForm.php">
+        <div class="profile">
+            <form action="profile.php">
                 <div>
-                    <h1 class="login-text">Hello</h1>
-                    <h3 class="login-text">Sign in to Aqua Marine</h3>
+                    <h1 class="profile-text">User Profile Page</h1>
+                    <h3 class="profile-text">Welcome back to Aqua Marine</h3>
                 </div>
                 <div>
                     <input type="text" placeholder="Email" name="login">

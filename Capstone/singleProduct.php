@@ -37,6 +37,7 @@
                 <a href="login.php">Login</a>
                 <a href="orders.php">Orders</a>
                 <a href="cart.php">Cart</a>
+                <a href="profile.php">Profile</a>
             </div>
         </div>
 </header>
