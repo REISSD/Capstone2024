@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 16, 2024 at 12:57 AM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Host: localhost
+-- Generation Time: Mar 31, 2024 at 04:36 PM
+-- Server version: 8.0.31
+-- PHP Version: 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,23 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cart` (
-  `Cart_id` int(11) NOT NULL,
-  `User_id` int(11) DEFAULT NULL,
-  `incart_product` int(11) DEFAULT NULL,
-  `Amount` int(11) DEFAULT NULL,
-  `productTable` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`Cart_id`, `User_id`, `incart_product`, `Amount`, `productTable`) VALUES
-(12, 1, 4, 1, 'fishs'),
-(13, 1, 3, 1, 'fishs'),
-(14, 1, 1, 1, 'decorations'),
-(15, 1, 6, 1, 'fishs'),
-(16, 1, 3, 1, 'decorations');
+  `Cart_id` int NOT NULL,
+  `User_id` int DEFAULT NULL,
+  `incart_product` int DEFAULT NULL,
+  `Amount` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -53,14 +41,14 @@ INSERT INTO `cart` (`Cart_id`, `User_id`, `incart_product`, `Amount`, `productTa
 --
 
 CREATE TABLE `comments` (
-  `Comments_id` int(11) NOT NULL,
-  `Comments_info` varchar(45) DEFAULT NULL,
-  `Comments_members_id` int(11) DEFAULT NULL,
-  `Comments_fishs_id` int(11) DEFAULT NULL,
-  `Comments_heaters_id` int(11) DEFAULT NULL,
-  `Comments_plants_id` int(11) DEFAULT NULL,
-  `Comments_tanks_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `Comments_id` int NOT NULL,
+  `Comments_info` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Comments_members_id` int DEFAULT NULL,
+  `Comments_fishs_id` int DEFAULT NULL,
+  `Comments_heaters_id` int DEFAULT NULL,
+  `Comments_plants_id` int DEFAULT NULL,
+  `Comments_tanks_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -69,11 +57,11 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `decorations` (
-  `Decorations_Id` int(11) NOT NULL,
+  `Decorations_Id` int NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
   `Cost` float DEFAULT NULL,
-  `Decoration_comment_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Decoration_comment_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `decorations`
@@ -93,11 +81,11 @@ INSERT INTO `decorations` (`Decorations_Id`, `Name`, `Cost`, `Decoration_comment
 --
 
 CREATE TABLE `fishs` (
-  `Fishs_id` int(11) NOT NULL,
+  `Fishs_id` int NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
   `Cost` float DEFAULT NULL,
-  `Fish_comment_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Fish_comment_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `fishs`
@@ -118,8 +106,8 @@ INSERT INTO `fishs` (`Fishs_id`, `Name`, `Cost`, `Fish_comment_id`) VALUES
 --
 
 CREATE TABLE `guest` (
-  `Guest` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Guest` tinyint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -128,11 +116,11 @@ CREATE TABLE `guest` (
 --
 
 CREATE TABLE `heaters` (
-  `Heaters_id` int(11) NOT NULL,
+  `Heaters_id` int NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
   `Cost` float DEFAULT NULL,
-  `Heater_comments_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Heater_comments_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `heaters`
@@ -152,14 +140,14 @@ INSERT INTO `heaters` (`Heaters_id`, `Name`, `Cost`, `Heater_comments_id`) VALUE
 --
 
 CREATE TABLE `incartproduct` (
-  `Incart_product_id` int(11) NOT NULL,
-  `Fish_id` int(11) DEFAULT NULL,
-  `Plant_id` int(11) DEFAULT NULL,
-  `Tank_id` int(11) DEFAULT NULL,
-  `Heater_id` int(11) DEFAULT NULL,
-  `Decoration_id` int(11) DEFAULT NULL,
-  `Cart_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Incart_product_id` int NOT NULL,
+  `Fish_id` int DEFAULT NULL,
+  `Plant_id` int DEFAULT NULL,
+  `Tank_id` int DEFAULT NULL,
+  `Heater_id` int DEFAULT NULL,
+  `Decoration_id` int DEFAULT NULL,
+  `Cart_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -168,23 +156,21 @@ CREATE TABLE `incartproduct` (
 --
 
 CREATE TABLE `members` (
-  `Members_Id` int(11) NOT NULL,
-  `Name` varchar(45) NOT NULL,
-  `Password` varchar(45) NOT NULL,
-  `Comment_id` int(11) DEFAULT NULL,
-  `address` varchar(20) NOT NULL,
-  `email` varchar(25) NOT NULL,
-  `orderNumber` int(5) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Members_Id` int NOT NULL,
+  `Name` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Password` varchar(45) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `Comment_id` int DEFAULT NULL,
+  `address` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL,
+  `email` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`, `email`, `orderNumber`) VALUES
-(1, 'James', 'JJmes', NULL, '123 James St', 'James@mail.vom', 7),
-(2, 'Sython', 'SS', NULL, '3452 Syth Street', 'Sython@mail.com', NULL),
-(4, 'test', 'test123', NULL, '7575 street', 'test@gmail.com', NULL);
+INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`, `email`) VALUES
+(1, 'James', 'JJmes', NULL, '123 James St', 'James@mail.vom'),
+(2, 'Sython', 'SS', NULL, '3452 Syth Street', 'Sython@mail.com');
 
 -- --------------------------------------------------------
 
@@ -193,30 +179,10 @@ INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`
 --
 
 CREATE TABLE `orders` (
-  `Order_Id` int(11) NOT NULL,
-  `Cart_Id` int(11) DEFAULT NULL,
-  `Status` tinyint(4) DEFAULT NULL,
-  `orderNumber` int(5) NOT NULL,
-  `user_id` int(10) NOT NULL,
-  `incart_product` int(10) NOT NULL,
-  `Amount` int(10) NOT NULL,
-  `productTable` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`Order_Id`, `Cart_Id`, `Status`, `orderNumber`, `user_id`, `incart_product`, `Amount`, `productTable`) VALUES
-(10, NULL, 0, 6, 1, 4, 1, 'fishs'),
-(11, NULL, 0, 6, 1, 3, 1, 'fishs'),
-(12, NULL, 0, 6, 1, 1, 1, 'decorations'),
-(13, NULL, 0, 6, 1, 6, 1, 'fishs'),
-(14, NULL, 0, 7, 1, 4, 1, 'fishs'),
-(15, NULL, 0, 7, 1, 3, 1, 'fishs'),
-(16, NULL, 0, 7, 1, 1, 1, 'decorations'),
-(17, NULL, 0, 7, 1, 6, 1, 'fishs'),
-(18, NULL, 0, 7, 1, 3, 1, 'decorations');
+  `Order_Id` int NOT NULL,
+  `Cart_Id` int DEFAULT NULL,
+  `Status` tinyint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 -- --------------------------------------------------------
 
@@ -225,11 +191,11 @@ INSERT INTO `orders` (`Order_Id`, `Cart_Id`, `Status`, `orderNumber`, `user_id`,
 --
 
 CREATE TABLE `plants` (
-  `Plants_id` int(11) NOT NULL,
+  `Plants_id` int NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
   `Cost` float DEFAULT NULL,
-  `Plants_comment_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Plants_comment_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `plants`
@@ -249,15 +215,15 @@ INSERT INTO `plants` (`Plants_id`, `Name`, `Cost`, `Plants_comment_id`) VALUES
 --
 
 CREATE TABLE `tanks` (
-  `Tanks_id` int(11) NOT NULL,
+  `Tanks_id` int NOT NULL,
   `Name` varchar(45) DEFAULT NULL,
-  `Length` int(11) DEFAULT NULL,
-  `Width` int(11) DEFAULT NULL,
-  `Height` int(11) DEFAULT NULL,
+  `Length` int DEFAULT NULL,
+  `Width` int DEFAULT NULL,
+  `Height` int DEFAULT NULL,
   `Measurement` varchar(45) NOT NULL,
   `Cost` float DEFAULT NULL,
-  `Tanks_comment_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `Tanks_comment_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `tanks`
@@ -277,12 +243,12 @@ INSERT INTO `tanks` (`Tanks_id`, `Name`, `Length`, `Width`, `Height`, `Measureme
 --
 
 CREATE TABLE `users` (
-  `User_Id` int(11) NOT NULL,
-  `Members_Id` int(11) DEFAULT NULL,
-  `Guest` tinyint(4) NOT NULL,
-  `Order_Id` int(11) DEFAULT NULL,
-  `Cart_Id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `User_Id` int NOT NULL,
+  `Members_Id` int DEFAULT NULL,
+  `Guest` tinyint NOT NULL,
+  `Order_Id` int DEFAULT NULL,
+  `Cart_Id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Indexes for dumped tables
@@ -298,11 +264,29 @@ ALTER TABLE `cart`
   ADD KEY `Product_Id_idx` (`incart_product`);
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`Comments_id`),
+  ADD KEY `Comments_members_id_idx` (`Comments_members_id`),
+  ADD KEY `Comments_heaters_id_idx` (`Comments_heaters_id`) INVISIBLE,
+  ADD KEY `Comments_plants_id_idx` (`Comments_plants_id`) INVISIBLE,
+  ADD KEY `Comments_tanks_id_idx` (`Comments_tanks_id`),
+  ADD KEY `Coments_fishs_id_idx` (`Comments_fishs_id`) INVISIBLE;
+
+--
 -- Indexes for table `decorations`
 --
 ALTER TABLE `decorations`
   ADD PRIMARY KEY (`Decorations_Id`),
   ADD KEY `Decorations_comment_Id_idx` (`Decoration_comment_id`) USING BTREE;
+
+--
+-- Indexes for table `fishs`
+--
+ALTER TABLE `fishs`
+  ADD PRIMARY KEY (`Fishs_id`),
+  ADD KEY `Fish_comments_id_idx` (`Fish_comment_id`) INVISIBLE;
 
 --
 -- Indexes for table `guest`
@@ -366,9 +350,11 @@ ALTER TABLE `tanks`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD KEY `Guest` (`Guest`),
-  ADD KEY `Member_Id` (`Members_Id`),
-  ADD KEY `Order_Id` (`Order_Id`);
+  ADD PRIMARY KEY (`User_Id`),
+  ADD UNIQUE KEY `Members_Id_UNIQUE` (`Members_Id`),
+  ADD KEY `Order_Id` (`Order_Id`),
+  ADD KEY `Member_Id` (`Members_Id`) INVISIBLE,
+  ADD KEY `Guest` (`Guest`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -378,35 +364,93 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `Cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Cart_id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `incartproduct`
 --
 ALTER TABLE `incartproduct`
-  MODIFY `Incart_product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Incart_product_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `Members_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `Members_Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Order_Id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `incart_product_id` FOREIGN KEY (`incart_product`) REFERENCES `incartproduct` (`Incart_product_id`),
+  ADD CONSTRAINT `User_Id` FOREIGN KEY (`User_id`) REFERENCES `users` (`User_Id`);
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `Comment_member_id` FOREIGN KEY (`Comments_members_id`) REFERENCES `members` (`Members_Id`),
+  ADD CONSTRAINT `Comments_fish_id` FOREIGN KEY (`Comments_fishs_id`) REFERENCES `fishs` (`Fishs_id`),
+  ADD CONSTRAINT `Comments_heaters_id` FOREIGN KEY (`Comments_heaters_id`) REFERENCES `heaters` (`Heaters_id`),
+  ADD CONSTRAINT `Comments_members_id` FOREIGN KEY (`Comments_members_id`) REFERENCES `members` (`Members_Id`),
+  ADD CONSTRAINT `Comments_plants_id` FOREIGN KEY (`Comments_plants_id`) REFERENCES `plants` (`Plants_id`),
+  ADD CONSTRAINT `Comments_tanks_id` FOREIGN KEY (`Comments_tanks_id`) REFERENCES `tanks` (`Tanks_id`);
+
+--
+-- Constraints for table `fishs`
+--
+ALTER TABLE `fishs`
+  ADD CONSTRAINT `Fish_comments_id` FOREIGN KEY (`Fish_comment_id`) REFERENCES `comments` (`Comments_id`);
+
+--
+-- Constraints for table `heaters`
+--
+ALTER TABLE `heaters`
+  ADD CONSTRAINT `Heater_comments_id` FOREIGN KEY (`Heater_comments_id`) REFERENCES `comments` (`Comments_id`);
+
+--
+-- Constraints for table `incartproduct`
+--
+ALTER TABLE `incartproduct`
+  ADD CONSTRAINT `Decoration_Id` FOREIGN KEY (`Decoration_id`) REFERENCES `decorations` (`Decorations_Id`),
+  ADD CONSTRAINT `Fish_Id` FOREIGN KEY (`Fish_id`) REFERENCES `fishs` (`Fishs_id`),
+  ADD CONSTRAINT `Heater_Id` FOREIGN KEY (`Heater_id`) REFERENCES `heaters` (`Heaters_id`),
+  ADD CONSTRAINT `Plant_iId` FOREIGN KEY (`Plant_id`) REFERENCES `plants` (`Plants_id`),
+  ADD CONSTRAINT `Tank_Id` FOREIGN KEY (`Tank_id`) REFERENCES `tanks` (`Tanks_id`);
+
+--
+-- Constraints for table `members`
+--
+ALTER TABLE `members`
+  ADD CONSTRAINT `Comment_id` FOREIGN KEY (`Comment_id`) REFERENCES `comments` (`Comments_id`);
+
+--
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
   ADD CONSTRAINT `Cart_Id` FOREIGN KEY (`Cart_Id`) REFERENCES `cart` (`Cart_id`);
+
+--
+-- Constraints for table `plants`
+--
+ALTER TABLE `plants`
+  ADD CONSTRAINT `Plant_comments_id` FOREIGN KEY (`Plants_comment_id`) REFERENCES `comments` (`Comments_id`);
+
+--
+-- Constraints for table `tanks`
+--
+ALTER TABLE `tanks`
+  ADD CONSTRAINT `Tanks_comments_id` FOREIGN KEY (`Tanks_comment_id`) REFERENCES `comments` (`Comments_id`);
 
 --
 -- Constraints for table `users`

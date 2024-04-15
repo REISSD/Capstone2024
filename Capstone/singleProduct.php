@@ -43,9 +43,9 @@
 </header>
     <body>   
         <div class="product-text">
-            <h1>Products List</h1>
+            <h1>Product</h1>
         </div>
-        <div class="product-list">
+        <div class="productPage">
             <?php
                 
                 // Check if productID is set in the URL
@@ -56,12 +56,16 @@
                     $sql = "SELECT * FROM fishs WHERE Fishs_id = $fishID";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()) {    
-                        echo "<div class='product'>
-                            <img src='./graphic/fish/" . $row['Name'] . ".jpg' alt='fish' class='product-img'/>
-                            <div class='product-text'>
+                        echo "<div class='productSingle'>
+                            <img src='./graphic/fish/" . $row['Name'] . ".jpg' alt='fish' class='product-imgSingle'/>
+                            <div class='product-textSingle'>
                             <p>" . $row['Name'] . "</p>
+                            <p id='description'>Future description</p>
                             <p>$" . $row['Cost'] . "</p>
-                            </div></div></a>";
+                            <form method='post' action='cart.php'>
+                                <input type='hidden' name='chosenFishID' value='$fishID'>
+                                <button type='submit' class='addToCart'>Add to Cart</button>
+                            </form>";
                     }
                 } else {
                     // do nothing
@@ -75,14 +79,17 @@
                     $sql = "SELECT * FROM tanks WHERE Tanks_id = $tankID";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()) {    
-                        echo "<div class='product'>
-                            <img src='./graphic/tanks/" . $row['Name'] . ".jpg' alt='tank' class='product-img'/>
-                            <div class='product-text'>
+                        echo "<div class='productSingle'>
+                            <img src='./graphic/tanks/" . $row['Name'] . ".jpg' alt='tank' class='product-imgSingle'/>
+                            <div class='product-textSingle'>
                             <p>" . $row['Name'] . "</p>
+                            <p id='description'>Future description</p>
+                            <p>" . $row['Length'] . 'x' . $row['Width'] . 'x' . $row['Height'] . ' ' . $row['Measurement'] . "</p>
                             <p>$" . $row['Cost'] . "</p>
-                            <p>" . $row['Length'] . 'x' . $row['Width'] . 'x' . $row['Height'] . "</p>
-                            <p>" . $row['Measurement'] . "</p>
-                            </div></div></a>";
+                            <form method='post' action='cart.php'>
+                                <input type='hidden' name='chosenTankID' value='$tankID'>
+                                <button type='submit' class='addToCart'>Add to Cart</button>
+                            </form>";
                     }
                 } else {
                     // do nothing
@@ -96,12 +103,16 @@
                     $sql = "SELECT * FROM decorations WHERE Decorations_Id = $decorID";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()) {    
-                        echo "<div class='product'>
-                            <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
-                            <div class='product-text'>
+                        echo "<div class='productSingle'>
+                            <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-imgSingle'/>
+                            <div class='product-textSingle'>
                             <p>" . $row['Name'] . "</p>
+                            <p id='description'>Future description</p>
                             <p>$" . $row['Cost'] . "</p>
-                            </div></div></a>";
+                            <form method='post' action='cart.php'>
+                                <input type='hidden' name='chosenDecorID' value='$decorID'>
+                                <button type='submit' class='addToCart'>Add to Cart</button>
+                            </form>";
                     }
                 } else {
                     // do nothing
@@ -115,17 +126,22 @@
                     $sql = "SELECT * FROM plants WHERE Plants_id = $plantID";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()) {    
-                        echo "<a href='singleProduct.php?plantID=" . $row['Plants_id'] . "' class='product-link'><div class='product'>
-                            <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-img'/>
-                            <div class='product-text'>
+                        echo "<div class='productSingle'>
+                            <img src='./graphic/accessories/" . $row['Name'] . ".jpg' alt='acc' class='product-imgSingle'/>
+                            <div class='product-textSingle'>
                             <p>" . $row['Name'] . "</p>
+                            <p id='description'>Future description</p>
                             <p>$" . $row['Cost'] . "</p>
-                            </div></div></a>";
+                            <form method='post' action='cart.php'>
+                                <input type='hidden' name='chosenPlantID' value='$plantID'>
+                                <button type='submit' class='addToCart'>Add to Cart</button>
+                            </form>";
                     }
                 } else {
                     // do nothing
                 }
                 
+                echo "</div></div>";
             ?>
             
         </div>
