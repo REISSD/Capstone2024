@@ -18,7 +18,7 @@
                 </form>
                 <!-- NavBar -->
                 <a href="products.php">Products</a>
-                <a href="aboutus.html">About Us</a>
+                <a href="aboutus.php">About Us</a>
                 <a href="signup.php">Signup</a>
                 <a href="login.php">Login</a>
                 <a href="orders.php">Orders</a>

@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include 'db_connection.php';
 ?>
 <!DOCTYPE html>
@@ -43,7 +44,7 @@
         }
     </style>
    
-    <header>
+   <header>
         <div class="header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
@@ -56,9 +57,16 @@
                 </form>
                 <!-- NavBar -->
                 <a href="products.php">Products</a>
-                <a href="aboutus.html">About Us</a>
-                <a href="signup.php">Signup</a>
-                <a href="login.php">Login</a>
+                <a href="aboutus.php">About Us</a>
+                <?php
+                // Check if user is logged in
+                if(isset($_SESSION['Members_Id'])) {
+                    echo '<a href="logout.php">Logout</a>'; // Show logout button
+                } else {
+                    echo '<a href="signup.php">Signup</a>';
+                    echo '<a href="login.php">Login</a>';
+                }
+                ?>
                 <a href="orders.php">Orders</a>
                 <a href="cart.php">Cart</a>
                 <a href="profile.php">Profile</a>

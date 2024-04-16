@@ -8,7 +8,8 @@
 		 //Taking all 4 values from the form data(input)
 		$name = $_POST['name'];
 		$email = $_POST['email'];
-		$password = $_POST['password'];
+		$unHashedPassword = $_POST['password'];
+		$password = password_hash($unHashedPassword, PASSWORD_DEFAULT);
 		$address = $_POST['address'];
 		
 		// Performing insert query execution

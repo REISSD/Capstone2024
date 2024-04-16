@@ -18,11 +18,11 @@
         }
 
         session_start();
-        $_SESSION['user_id'] = 1;
-        $userID = $_SESSION['user_id'];
+        //$_SESSION['user_id'] = 1;
+        $userID = $_SESSION['Members_Id'];
         
         // Check if the user is logged in
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['Members_Id'])) {
             // Redirect the user to the login page if they're not logged in
             header("Location: login.php");
             exit();
@@ -30,7 +30,7 @@
     ?>
 </head>
 
-<header>
+    <header>
         <div class="header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
@@ -43,15 +43,22 @@
                 </form>
                 <!-- NavBar -->
                 <a href="products.php">Products</a>
-                <a href="aboutus.html">About Us</a>
-                <a href="signup.php">Signup</a>
-                <a href="login.php">Login</a>
+                <a href="aboutus.php">About Us</a>
+                <?php
+                // Check if user is logged in
+                if(isset($_SESSION['Members_Id'])) {
+                    echo '<a href="logout.php">Logout</a>'; // Show logout button
+                } else {
+                    echo '<a href="signup.php">Signup</a>';
+                    echo '<a href="login.php">Login</a>';
+                }
+                ?>
                 <a href="orders.php">Orders</a>
                 <a href="cart.php">Cart</a>
                 <a href="profile.php">Profile</a>
             </div>
         </div>
-</header>
+    </header>
     <body>   
     <div class="product-text">
             <h1>Cart</h1>
