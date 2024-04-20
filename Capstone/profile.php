@@ -106,15 +106,19 @@
                              <div>
                             <input type="text" value="<?php echo $rows['Name']?>" name="Name"   required>
                             </div>
+                            <label for="Name" style= padding-left:50px; >Name</label>
                             <div>
                             <input type="text" value="<?php echo $rows['email']?>" name="email" required>
                             </div>
+                            <label for="email" style= padding-left:50px; >Email</label>
                             <div>
                             <input type="password" value="<?php echo $rows['Password']?>" name="password" required>
                             </div>
+                            <label for="password" style= padding-left:50px; >Password</label>
                             <div>
                             <input type="text" value="<?php echo $rows['address']?>" name="Address" required>
                             </div>
+                            <label for="Address" style= padding-left:50px; >Address</label>
                             <div>
                             <input type="submit" placeholder="Update" Name="Update">
                             </div>
