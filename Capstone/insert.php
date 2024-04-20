@@ -13,7 +13,7 @@
 		$address = $_POST['address'];
 		
 		// Performing insert query execution
-		// (Name, Username, email, pass, address)
+		// (Name, email, pass, address)
 		$sql = "INSERT INTO members (name, email, password, address) 
 				  VALUES ('$name','$email','$password', '$address')";
 		

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Capstone</title>
+    <title>AquaMarine</title>
     <link rel="stylesheet" type="text/css" href="style.css"/>
 
     <?php

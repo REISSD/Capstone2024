@@ -80,7 +80,7 @@
                     <h1 class="login-text">Hello! New to Aqua Marine?</h1>
                     <h3 class="login-text">Register Here.</h3>
                 </div>
-                    <input type="text" name="name" placeholder="Name"  required>
+                    <input type="text" placeholder="Name" name="name" required>
                 <div>
                     <input type="text" placeholder="Email" name="email" required>
                 </div>
@@ -88,7 +88,7 @@
                     <input type="password" class="form-control" placeholder="Password" name="password" required>
                 </div>
                 <div>
-                    <input type="text" placeholder="Address" name="address" required>
+                    <input type="text" placeholder="address" name="address" required>
                 </div>
                 <div>
                     <input type="submit" placeholder="Submit" name="submit">
