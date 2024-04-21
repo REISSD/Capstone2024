@@ -8,42 +8,7 @@
         <meta charset="UTF-8">
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <style> 
-            input[type=text] {
-            height: 50px;
-            margin: 10px 50px 10px 50px;
-            padding-left: 20px;
-            border-radius: 5px;
-            font-size: 25px;
-            }
-            input[type=password] {
-            height: 50px;
-            margin: 10px 50px 10px 50px;
-            padding-left: 20px;
-            border-radius: 5px;
-            font-size: 25px;
-            }
-            input[name="search" i] {
-            float: right;
-            padding: 6px 20px;
-            border-radius: 50px;
-            color: black;
-            background-color: rgb(132, 197, 223);
-            border-color: white;
-            margin-right: 30px;
-            border: 0;
-            }
-            .signup {
-            background-color: white;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            margin-left: 40%;
-            margin-right: 40%;
-            width: 455px;
-            height: 804px;
-        }
-    </style>
-   
+          
    <header>
         <div class="header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
