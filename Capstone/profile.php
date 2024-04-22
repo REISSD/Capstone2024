@@ -55,7 +55,7 @@ echo "Connected Successfully";
             
                 <?php
                 $currentUser = $_SESSION['Members_Id'];
-                $sql = "SELECT * FROM members WHERE Members_Id = '$currentUser'";
+                $sql = "SELECT * FROM members WHERE Members_Id = $currentUser";
                 $results = $conn->query($sql);
                 
                 if($results){
@@ -94,16 +94,14 @@ echo "Connected Successfully";
                                         
                                 // Performing insert query execution
                                 // (Name, email, password, address)
-                                //$sql = "INSERT INTO members (name, email, password, address) 
-                                //		  VALUES ('$name','$email','$password', '$address')";
                                         
-                                $sql = "UPDATE members SET Name = '$name', email= '$email', password='$password', Address='$address',
-                                        WHERE Members_Id =$currentUser";
+                                $sql = "UPDATE members SET Name = '$name', email= '$email', password='$password', Address='$address'
+                                        WHERE Members_Id = $currentUser";
                                     
                                 if(mysqli_query($conn, $sql))
                                     {
-                                        echo "<script>alert('new record inserted')</script>"; 
-                                        echo "<script>window.open('signup.php','_self')</script>";
+                                        echo "<script>alert('record updated')</script>"; 
+                                        echo "<script>window.open('profile.php','_self')</script>";
                                     } 
                                     else
                                     {
