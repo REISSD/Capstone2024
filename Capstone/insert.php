@@ -20,8 +20,8 @@
 		
 		if(mysqli_query($conn, $sql))
 		{
-			echo "<script>alert('new record inserted')</script>"; 
-			echo "<script>window.open('signup.php','_self')</script>";
+			header('Location: login.php');
+        	exit();
 		} 
 		else
 		{

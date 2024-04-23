@@ -310,3 +310,133 @@ footer{
 .addToCart:hover{
     background-color: #1e56f0;
 }
+
+/* Styles for the review section */
+.review-section {
+    margin: 10px 25%; 
+    background-color: rgb(223, 223, 223);
+    border-radius: 25px;
+}
+
+/* Styles for the comment form */
+.comment-form {
+    padding: 10px;
+    text-align: center;
+}
+
+.comment-text {
+    width: 80%; 
+    height: 200px; 
+    margin: 0 auto; 
+    display: block; 
+    margin-bottom: 20px; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+.submit-comment {
+    background-color: #4170f3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-comment:hover {
+    background-color: #1e56f0;
+}
+
+/* Styles for existing comments */
+.comments-list {
+    margin-top: 5px;
+    border-top: 1px solid #ccc;
+}
+
+.comment {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+}
+
+.comment p {
+    margin: 0;
+}
+
+.memberName {
+    padding: 10px;
+    font-weight: bold;
+    font-size: larger;
+}
+.comment:last-child {
+    border-bottom: none; /* Remove border from last comment */
+}
+
+
+
+
+/* Container for each order */
+.order-container {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: rgb(223, 223, 223);
+    width: 70%;
+    height: auto;
+    margin: auto;
+    border-radius: 60px;
+    margin-top: 20px;
+}
+
+/* Style for each product item */
+.order-item {
+    display: flex;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    
+}
+
+.order-status {
+    float: right; /* Float the status to the right */
+    font-weight: bold; /* Add bold font weight */
+    color: #333; /* Set color */
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+/* Style for product image */
+.order-item img {
+    width: 170px; /* Increase image width */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px;
+    border-radius: 30px;
+}
+
+/* Style for product details */
+.order-item-details {
+    flex: 1; /* Take remaining space */
+}
+
+/* Style for product name */
+.product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 22px; /* Increase font size */
+}
+
+/* Style for product quantity */
+.product-quantity {
+    color: #888;
+    font-size: 20px; /* Increase font size */
+}
+
+/* Style for product price */
+.product-price {
+    color: #333;
+    font-size: 24px; /* Increase font size */
+    font-weight: bold;
+}

@@ -51,7 +51,29 @@
                 }
                 ?>
                 <a href="orders.php">Orders</a>
-                <a href="cart.php">Cart</a>
+                <?php
+                // Check if user is logged in
+                if(isset($_SESSION['Members_Id'])) {
+                    $membersID = $_SESSION['Members_Id'];
+                    $cartCountQuery = "SELECT COUNT(*) AS cartCount FROM cart WHERE User_id = $membersID";
+                    $cartCountResult = $conn->query($cartCountQuery);
+                    if ($cartCountResult) {
+                        $cartCountRow = $cartCountResult->fetch_assoc();
+                        $cartCount = $cartCountRow['cartCount'];
+                        // Output the cart link with the number of items in parentheses
+                        echo "<a href='cart.php'>Cart";
+                        if ($cartCount > 0) {
+                            echo " ($cartCount)";
+                        }
+                        echo "</a>";
+                    } else {
+                        // Handle error if needed
+                        echo "Error retrieving cart count.";
+                    }
+                } else {
+                    echo '<a href="cart.php">Cart</a>';
+                }
+                ?>
                 <a href="profile.php">Profile</a>
             </div>
         </div>
@@ -74,7 +96,7 @@
                         <input class="Name" type="text" placeholder="Name" name="Name">
                     </div>
                     <div>
-                        <input type="text" placeholder="Password" name="Password">
+                        <input type="password" placeholder="Password" name="Password">
                     </div>
                     <div>
                         <input type="submit" placeholder="Submit" name="submit">

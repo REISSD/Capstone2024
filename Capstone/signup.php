@@ -9,7 +9,7 @@
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>
           
-   <header>
+    <header>
         <div class="header">
             <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
@@ -33,7 +33,29 @@
                 }
                 ?>
                 <a href="orders.php">Orders</a>
-                <a href="cart.php">Cart</a>
+                <?php
+                // Check if user is logged in
+                if(isset($_SESSION['Members_Id'])) {
+                    $membersID = $_SESSION['Members_Id'];
+                    $cartCountQuery = "SELECT COUNT(*) AS cartCount FROM cart WHERE User_id = $membersID";
+                    $cartCountResult = $conn->query($cartCountQuery);
+                    if ($cartCountResult) {
+                        $cartCountRow = $cartCountResult->fetch_assoc();
+                        $cartCount = $cartCountRow['cartCount'];
+                        // Output the cart link with the number of items in parentheses
+                        echo "<a href='cart.php'>Cart";
+                        if ($cartCount > 0) {
+                            echo " ($cartCount)";
+                        }
+                        echo "</a>";
+                    } else {
+                        // Handle error if needed
+                        echo "Error retrieving cart count.";
+                    }
+                } else {
+                    echo '<a href="cart.php">Cart</a>';
+                }
+                ?>
                 <a href="profile.php">Profile</a>
             </div>
         </div>

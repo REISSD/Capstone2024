@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 01:25 PM
+-- Generation Time: Apr 16, 2024 at 08:13 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -35,6 +35,20 @@ CREATE TABLE `cart` (
   `productTable` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`Cart_id`, `User_id`, `incart_product`, `Amount`, `productTable`) VALUES
+(12, 1, 4, 1, 'fishs'),
+(13, 1, 3, 1, 'fishs'),
+(14, 1, 1, 1, 'decorations'),
+(15, 1, 6, 1, 'fishs'),
+(16, 1, 3, 1, 'decorations'),
+(17, 0, 5, 1, 'fishs'),
+(18, 8, 4, 1, 'fishs'),
+(19, 8, 1, 1, 'tanks');
+
 -- --------------------------------------------------------
 
 --
@@ -45,8 +59,10 @@ CREATE TABLE `comments` (
   `Comments_id` int(11) NOT NULL,
   `Comments_info` varchar(45) DEFAULT NULL,
   `Comments_members_id` int(11) DEFAULT NULL,
-  `Product_ID` int(5) NOT NULL,
-  `Product_Type` varchar(30) NOT NULL
+  `Comments_fishs_id` int(11) DEFAULT NULL,
+  `Comments_heaters_id` int(11) DEFAULT NULL,
+  `Comments_plants_id` int(11) DEFAULT NULL,
+  `Comments_tanks_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -161,17 +177,15 @@ CREATE TABLE `members` (
   `Comment_id` int(11) DEFAULT NULL,
   `address` varchar(20) NOT NULL,
   `email` varchar(25) NOT NULL,
-  `orderNumber` int(5) DEFAULT NULL,
-  `isAdmin` int(3) DEFAULT NULL
+  `orderNumber` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`, `email`, `orderNumber`, `isAdmin`) VALUES
-(13, 'admin', '$2y$10$21fzFLjkZU.sXDs3CyGfQeXJMqJOY4BeimQbpM.uEXWJaU.IKaQnW', NULL, 'admin', 'admin', NULL, 1),
-(14, 'wes', '$2y$10$8Eu1qJLyy/QsAjX4yLCLrOUoc6gjriSBNbZkqNdhp.cvw9POKqNCe', NULL, '1234', 'wes@', 1, NULL);
+INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`, `email`, `orderNumber`) VALUES
+(8, 'wes', '$2y$10$LyYRlhr4NjBlmcyV/pL9q.5pYSGad/8M51ufpIQgxtvrtAgriFXum', NULL, 'rsfdsf', 'w', 1);
 
 -- --------------------------------------------------------
 
@@ -182,13 +196,30 @@ INSERT INTO `members` (`Members_Id`, `Name`, `Password`, `Comment_id`, `address`
 CREATE TABLE `orders` (
   `Order_Id` int(11) NOT NULL,
   `Cart_Id` int(11) DEFAULT NULL,
-  `Status` varchar(30) DEFAULT NULL,
+  `Status` tinyint(4) DEFAULT NULL,
   `orderNumber` int(5) NOT NULL,
   `user_id` int(10) NOT NULL,
   `incart_product` int(10) NOT NULL,
   `Amount` int(10) NOT NULL,
   `productTable` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`Order_Id`, `Cart_Id`, `Status`, `orderNumber`, `user_id`, `incart_product`, `Amount`, `productTable`) VALUES
+(10, NULL, 0, 6, 1, 4, 1, 'fishs'),
+(11, NULL, 0, 6, 1, 3, 1, 'fishs'),
+(12, NULL, 0, 6, 1, 1, 1, 'decorations'),
+(13, NULL, 0, 6, 1, 6, 1, 'fishs'),
+(14, NULL, 0, 7, 1, 4, 1, 'fishs'),
+(15, NULL, 0, 7, 1, 3, 1, 'fishs'),
+(16, NULL, 0, 7, 1, 1, 1, 'decorations'),
+(17, NULL, 0, 7, 1, 6, 1, 'fishs'),
+(18, NULL, 0, 7, 1, 3, 1, 'decorations'),
+(19, NULL, 0, 1, 8, 4, 1, 'fishs'),
+(20, NULL, 0, 1, 8, 1, 1, 'tanks');
 
 -- --------------------------------------------------------
 
@@ -268,12 +299,6 @@ ALTER TABLE `cart`
   ADD UNIQUE KEY `Cart_Id_UNIQUE` (`Cart_id`),
   ADD KEY `User_Id_idx` (`User_id`),
   ADD KEY `Product_Id_idx` (`incart_product`);
-
---
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`Comments_id`);
 
 --
 -- Indexes for table `decorations`
@@ -356,13 +381,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `Cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-
---
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `Comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `incartproduct`
@@ -374,13 +393,13 @@ ALTER TABLE `incartproduct`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `Members_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Members_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `Order_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
