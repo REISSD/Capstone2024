@@ -6,16 +6,9 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 
     <?php
-    //db
-        define('DB_SERVER', 'localhost');
-        define('DB_USERNAME', 'root');
-        define('DB_PASSWORD', '');
-        define('DB_NAME', 'capstone');
-        $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        //db
+        include("db_connection.php");
+        $conn = OpenCon();
 
         session_start();
         //$_SESSION['user_id'] = 1;
