@@ -41,6 +41,11 @@ echo "Connected Successfully";
                             echo "Error retrieving user data.";
                         }
                     }
+                    else
+                    {
+                        header("Location: signup.php");
+                        exit();
+                    }
                 ?>
                 <form action="search.php">
                     <input type="text" placeholder="Search" name="search">
