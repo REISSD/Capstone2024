@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 28, 2024 at 11:30 PM
+-- Generation Time: Apr 28, 2024 at 11:37 PM
 -- Server version: 8.0.31
 -- PHP Version: 7.4.33
 
@@ -234,22 +234,22 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`Product_id`, `Product_Name`, `Cost`, `Description`, `Table`, `Table_id`) VALUES
-(1, 'Mickey Mou', 12.99, '', 'fish', 1),
-(2, 'Guppies', 12.99, NULL, 'fish', 2),
-(3, 'Zebra Dani', 13.99, NULL, 'fish', 3),
-(4, 'Neon Tetra', 13.99, NULL, 'fish', 4),
-(5, 'White Clou', 10.99, NULL, 'Fish', 5),
-(6, 'Tiger Barb', 9.99, NULL, 'fish', 6),
+(1, 'Mickey Mou', 12.99, '', 'fishs', 1),
+(2, 'Guppies', 12.99, NULL, 'fishs', 2),
+(3, 'Zebra Dani', 13.99, NULL, 'fishs', 3),
+(4, 'Neon Tetra', 13.99, NULL, 'fishs', 4),
+(5, 'White Clou', 10.99, NULL, 'fishs', 5),
+(6, 'Tiger Barb', 9.99, NULL, 'fishs', 6),
 (7, 'Rocks', 2.99, NULL, 'decorations', 1),
 (8, 'Underwater', 4.99, NULL, 'decorations', 2),
 (9, 'SpongeBob ', 12.99, NULL, 'decorations', 3),
 (10, 'Large Rock', 4.99, NULL, 'decorations', 4),
 (11, 'Hollow Roc', 19.99, NULL, 'decorations', 5),
-(22, 'Jonny Hang', 12.99, NULL, 'heater', 1),
-(23, 'Jones Subm', 14.99, NULL, 'heater', 2),
-(24, 'Stones Inl', 9.99, NULL, 'heater', 3),
-(25, 'Luther Can', 15.99, NULL, 'heater', 4),
-(26, 'Carrys Inf', 12.99, NULL, 'heater', 5),
+(22, 'Jonny Hang', 12.99, NULL, 'heaters', 1),
+(23, 'Jones Subm', 14.99, NULL, 'heaters', 2),
+(24, 'Stones Inl', 9.99, NULL, 'heaters', 3),
+(25, 'Luther Can', 15.99, NULL, 'heaters', 4),
+(26, 'Carrys Inf', 12.99, NULL, 'heaters', 5),
 (27, 'Dwarf Anub', 2.99, NULL, 'plants', 1),
 (28, 'Java Fern', 3.99, NULL, 'plants', 2),
 (29, 'Moneywort', 2.99, NULL, 'plants', 3),
