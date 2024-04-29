@@ -74,7 +74,11 @@
                         } else {
                             echo "Error retrieving user data.";
                         }
+                        
                     }
+                        
+                        
+                    
                 ?>
                 <form action="search.php" method="GET">
                     <input type="text" placeholder="Search" name="search" id="search">
@@ -196,7 +200,9 @@
                     exit();
                     }
                 
-                }       
+                }
+                 
+                    
 
     
 		?>
