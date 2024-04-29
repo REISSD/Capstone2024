@@ -107,14 +107,36 @@ function generateReviewSection($productID, $productType, $conn) {
             }
         }
     ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').keyup(function() {
+            var query = $(this).val();
+
+            if(query.length >= 1) {
+                $.ajax({
+                    url: 'search.php',
+                    type: 'GET',
+                    data: { search: query },
+                    success: function(response) {
+                        $('#search-results').html(response);
+                    }
+                });
+            } else {
+                $('#search-results').html('');
+            }
+        });
+    });
+</script>
+
 </head>
 
     <header>
         <div class="header">
-            <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
+            <a href="index.php" class="logo navBarButton"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
-                <a>Aqua Marine</a>
-                <a>Selling Fish, Tanks, and More</a>
+                <a class="navBarButton">Aqua Marine</a>
+                <a class="navBarButton">Selling Fish, Tanks, and More</a>
             </div>
             <div class="header-right">
                 <?php
@@ -137,22 +159,24 @@ function generateReviewSection($productID, $productType, $conn) {
                         }
                     }
                 ?>
-                <form action="search.php">
-                    <input type="text" placeholder="Search" name="search">
+                <form action="search.php" method="GET">
+                    <input type="text" placeholder="Search" name="search" id="search">
+                    <div id="search-results" class="searchResults"></div>
                 </form>
+                
                 <!-- NavBar -->
-                <a href="products.php">Products</a>
-                <a href="aboutus.php">About Us</a>
+                <a href="products.php" class="navBarButton">Products</a>
+                <a href="aboutus.php" class="navBarButton">About Us</a>
                 <?php
                 // Check if user is logged in
                 if(isset($_SESSION['Members_Id'])) {
-                    echo '<a href="logout.php">Logout</a>'; // Show logout button
+                    echo '<a href="logout.php" class="navBarButton">Logout</a>'; // Show logout button
                 } else {
-                    echo '<a href="signup.php">Signup</a>';
-                    echo '<a href="login.php">Login</a>';
+                    echo '<a href="signup.php" class="navBarButton">Signup</a>';
+                    echo '<a href="login.php" class="navBarButton">Login</a>';
                 }
                 ?>
-                <a href="orders.php">Orders</a>
+                <a href="orders.php" class="navBarButton">Orders</a>
                 <?php
                 // Check if user is logged in
                 if(isset($_SESSION['Members_Id'])) {
@@ -163,7 +187,7 @@ function generateReviewSection($productID, $productType, $conn) {
                         $cartCountRow = $cartCountResult->fetch_assoc();
                         $cartCount = $cartCountRow['cartCount'];
                         // Output the cart link with the number of items in parentheses
-                        echo "<a href='cart.php'>Cart";
+                        echo "<a href='cart.php' class='navBarButton'>Cart";
                         if ($cartCount > 0) {
                             echo " ($cartCount)";
                         }
@@ -173,10 +197,10 @@ function generateReviewSection($productID, $productType, $conn) {
                         echo "Error retrieving cart count.";
                     }
                 } else {
-                    echo '<a href="cart.php">Cart</a>';
+                    echo '<a href="cart.php" class="navBarButton">Cart</a>';
                 }
                 ?>
-                <a href="profile.php">Profile</a>
+                <a href="profile.php" class="navBarButton">Profile</a>
             </div>
         </div>
     </header>
