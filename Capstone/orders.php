@@ -6,16 +6,9 @@
     <link rel="stylesheet" type="text/css" href="style.css"/>
 
     <?php
-    //db
-        define('DB_SERVER', 'localhost');
-        define('DB_USERNAME', 'root');
-        define('DB_PASSWORD', '');
-        define('DB_NAME', 'capstone');
-        $conn = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        //db
+        include("db_connection.php");
+        $conn = OpenCon();
 
         session_start();
         //$_SESSION['user_id'] = 1;
@@ -75,17 +68,51 @@
             }
             
             // Provide feedback to the user
-            echo "Order placed successfully!";
+            //echo "Order placed successfully!";
         }
     ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Function to perform search and update results
+        function performSearch(query) {
+            if (query.length >= 1) {
+                $.ajax({
+                    url: 'search.php',
+                    type: 'GET',
+                    data: { search: query },
+                    success: function(response) {
+                        $('#search-results').html(response);
+                    }
+                });
+            } else {
+                $('#search-results').html('');
+            }
+        }
+
+        // Listen for keyup event on search input
+        $('#search').keyup(function() {
+            var query = $(this).val();
+            performSearch(query);
+        });
+
+        // Prevent form submission on Enter key press
+        $('#search').keypress(function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission behavior
+            }
+        });
+    });
+</script>
+
 </head>
 
-<header>
+    <header>
         <div class="header">
-            <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
+            <a href="index.php" class="logo navBarButton"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
-                <a>Aqua Marine</a>
-                <a>Selling Fish, Tanks, and More</a>
+                <a class="navBarButton">Aqua Marine</a>
+                <a class="navBarButton">Selling Fish, Tanks, and More</a>
             </div>
             <div class="header-right">
                 <?php
@@ -108,22 +135,24 @@
                         }
                     }
                 ?>
-                <form action="search.php">
-                    <input type="text" placeholder="Search" name="search">
+                <form action="search.php" method="GET">
+                    <input type="text" placeholder="Search" name="search" id="search">
+                    <div id="search-results" class="searchResults"></div>
                 </form>
+                
                 <!-- NavBar -->
-                <a href="products.php">Products</a>
-                <a href="aboutus.php">About Us</a>
+                <a href="products.php" class="navBarButton">Products</a>
+                <a href="aboutus.php" class="navBarButton">About Us</a>
                 <?php
                 // Check if user is logged in
                 if(isset($_SESSION['Members_Id'])) {
-                    echo '<a href="logout.php">Logout</a>'; // Show logout button
+                    echo '<a href="logout.php" class="navBarButton">Logout</a>'; // Show logout button
                 } else {
-                    echo '<a href="signup.php">Signup</a>';
-                    echo '<a href="login.php">Login</a>';
+                    echo '<a href="signup.php" class="navBarButton">Signup</a>';
+                    echo '<a href="login.php" class="navBarButton">Login</a>';
                 }
                 ?>
-                <a href="orders.php">Orders</a>
+                <a href="orders.php" class="navBarButton">Orders</a>
                 <?php
                 // Check if user is logged in
                 if(isset($_SESSION['Members_Id'])) {
@@ -134,7 +163,7 @@
                         $cartCountRow = $cartCountResult->fetch_assoc();
                         $cartCount = $cartCountRow['cartCount'];
                         // Output the cart link with the number of items in parentheses
-                        echo "<a href='cart.php'>Cart";
+                        echo "<a href='cart.php' class='navBarButton'>Cart";
                         if ($cartCount > 0) {
                             echo " ($cartCount)";
                         }
@@ -144,10 +173,10 @@
                         echo "Error retrieving cart count.";
                     }
                 } else {
-                    echo '<a href="cart.php">Cart</a>';
+                    echo '<a href="cart.php" class="navBarButton">Cart</a>';
                 }
                 ?>
-                <a href="profile.php">Profile</a>
+                <a href="profile.php" class="navBarButton">Profile</a>
             </div>
         </div>
     </header>

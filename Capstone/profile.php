@@ -1,7 +1,7 @@
 <?php
-include 'db_connection.php';
-$conn = OpenCon();
-echo "Connected Successfully";
+    include 'db_connection.php';
+    $conn = OpenCon();
+    //echo "Connected Successfully";
 ?>
 
  <?php session_start(); ?>
@@ -12,14 +12,48 @@ echo "Connected Successfully";
         <meta charset="UTF-8">
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>      
-    </head>
-    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+    $(document).ready(function() {
+        // Function to perform search and update results
+        function performSearch(query) {
+            if (query.length >= 1) {
+                $.ajax({
+                    url: 'search.php',
+                    type: 'GET',
+                    data: { search: query },
+                    success: function(response) {
+                        $('#search-results').html(response);
+                    }
+                });
+            } else {
+                $('#search-results').html('');
+            }
+        }
+
+        // Listen for keyup event on search input
+        $('#search').keyup(function() {
+            var query = $(this).val();
+            performSearch(query);
+        });
+
+        // Prevent form submission on Enter key press
+        $('#search').keypress(function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission behavior
+            }
+        });
+    });
+</script>
+
+</head>
+
     <header>
         <div class="header">
-            <a href="index.php" class="logo"><img src="./graphic/Logo.png" alt="Logo"></a>
+            <a href="index.php" class="logo navBarButton"><img src="./graphic/Logo.png" alt="Logo"></a>
             <div class="header-text">
-                <a>Aqua Marine</a>
-                <a>Selling Fish, Tanks, and More</a>
+                <a class="navBarButton">Aqua Marine</a>
+                <a class="navBarButton">Selling Fish, Tanks, and More</a>
             </div>
             <div class="header-right">
                 <?php
@@ -41,28 +75,25 @@ echo "Connected Successfully";
                             echo "Error retrieving user data.";
                         }
                     }
-                    else
-                    {
-                        header("Location: signup.php");
-                        exit();
-                    }
                 ?>
-                <form action="search.php">
-                    <input type="text" placeholder="Search" name="search">
+                <form action="search.php" method="GET">
+                    <input type="text" placeholder="Search" name="search" id="search">
+                    <div id="search-results" class="searchResults"></div>
                 </form>
+                
                 <!-- NavBar -->
-                <a href="products.php">Products</a>
-                <a href="aboutus.php">About Us</a>
+                <a href="products.php" class="navBarButton">Products</a>
+                <a href="aboutus.php" class="navBarButton">About Us</a>
                 <?php
                 // Check if user is logged in
                 if(isset($_SESSION['Members_Id'])) {
-                    echo '<a href="logout.php">Logout</a>'; // Show logout button
+                    echo '<a href="logout.php" class="navBarButton">Logout</a>'; // Show logout button
                 } else {
-                    echo '<a href="signup.php">Signup</a>';
-                    echo '<a href="login.php">Login</a>';
+                    echo '<a href="signup.php" class="navBarButton">Signup</a>';
+                    echo '<a href="login.php" class="navBarButton">Login</a>';
                 }
                 ?>
-                <a href="orders.php">Orders</a>
+                <a href="orders.php" class="navBarButton">Orders</a>
                 <?php
                 // Check if user is logged in
                 if(isset($_SESSION['Members_Id'])) {
@@ -73,7 +104,7 @@ echo "Connected Successfully";
                         $cartCountRow = $cartCountResult->fetch_assoc();
                         $cartCount = $cartCountRow['cartCount'];
                         // Output the cart link with the number of items in parentheses
-                        echo "<a href='cart.php'>Cart";
+                        echo "<a href='cart.php' class='navBarButton'>Cart";
                         if ($cartCount > 0) {
                             echo " ($cartCount)";
                         }
@@ -83,10 +114,10 @@ echo "Connected Successfully";
                         echo "Error retrieving cart count.";
                     }
                 } else {
-                    echo '<a href="cart.php">Cart</a>';
+                    echo '<a href="cart.php" class="navBarButton">Cart</a>';
                 }
                 ?>
-                <a href="profile.php">Profile</a>
+                <a href="profile.php" class="navBarButton">Profile</a>
             </div>
         </div>
     </header>
@@ -108,22 +139,26 @@ echo "Connected Successfully";
                         while($rows = mysqli_fetch_array($results)){
                             //print_r($rows['Name']);
                             ?>
+                            <label for="Name" style= padding-left:50px; >Name</label>
                              <div>
                             <input type="text" value="<?php echo $rows['Name']?>" name="Name"   required>
                             </div>
-                            <label for="Name" style= padding-left:50px; >Name</label>
+                            
+                            <label for="email" style= padding-left:50px; >Email</label>
                             <div>
                             <input type="text" value="<?php echo $rows['email']?>" name="email" required>
                             </div>
-                            <label for="email" style= padding-left:50px; >Email</label>
+                            
+                            <label for="password" style= padding-left:50px; >Password</label>
                             <div>
                             <input type="password" value="" name="password" required>
                             </div>
-                            <label for="password" style= padding-left:50px; >Password</label>
+                            
+                            <label for="Address" style= padding-left:50px; >Address</label>
                             <div>
                             <input type="text" value="<?php echo $rows['address']?>" name="Address" required>
                             </div>
-                            <label for="Address" style= padding-left:50px; >Address</label>
+                            
                             <div>
                             <input type="submit" placeholder="Update" Name="Update">
                             </div>
@@ -145,8 +180,7 @@ echo "Connected Successfully";
                                     
                                 if(mysqli_query($conn, $sql))
                                     {
-                                        echo "<script>alert('record updated')</script>"; 
-                                        echo "<script>window.open('profile.php','_self')</script>";
+                                        echo "<p>Status Updated</p>";
                                     } 
                                     else
                                     {
