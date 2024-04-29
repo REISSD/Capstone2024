@@ -74,8 +74,11 @@
                         } else {
                             echo "Error retrieving user data.";
                         }
-                        
+                    } else {
+                        header("Location: signup.php");
                     }
+                        
+                    
                         
                         
                     
