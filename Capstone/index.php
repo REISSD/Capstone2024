@@ -11,6 +11,29 @@
         include("db_connection.php");
         $conn = OpenCon();
     ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#search').keyup(function() {
+            var query = $(this).val();
+
+            if(query.length >= 3) {
+                $.ajax({
+                    url: 'search.php',
+                    type: 'GET',
+                    data: { search: query },
+                    success: function(response) {
+                        $('#search-results').html(response);
+                    }
+                });
+            } else {
+                $('#search-results').html('');
+            }
+        });
+    });
+</script>
+
 </head>
 
     <header>
@@ -41,9 +64,11 @@
                         }
                     }
                 ?>
-                <form action="search.php">
-                    <input type="text" placeholder="Search" name="search">
+                <form action="search.php" method="GET">
+                    <input type="text" placeholder="Search" name="search" id="search">
+                    <div id="search-results"></div>
                 </form>
+                
                 <!-- NavBar -->
                 <a href="products.php">Products</a>
                 <a href="aboutus.php">About Us</a>
