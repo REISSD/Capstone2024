@@ -45,7 +45,31 @@
         });
     });
 </script>
-
+<?php
+                                        if(isset($_POST['Update'])) {
+                                            //Taking all 4 values from the form data(input)
+                                            $name = $_POST['Name'];
+                                            $email = $_POST['email'];
+                                            $unHashedPassword = $_POST['password'];
+                                            $password = password_hash($unHashedPassword, PASSWORD_DEFAULT);
+                                            $address = $_POST['Address'];
+                                            $currentUser = $_SESSION['Members_Id'];
+                                            
+                                            // Performing insert query execution
+                                            // (Name, email, password, address)
+                                            
+                                            $sql = "UPDATE members SET Name = '$name', email= '$email', password='$password', Address='$address'
+                                                WHERE Members_Id = $currentUser";
+                                        
+                                            if(mysqli_query($conn, $sql)) {
+                                                $ifStatus = true;
+                                            } 
+                                            else {
+                                                echo "ERROR:" .mysqli_error($conn);
+                                            }
+                                            
+                                        }
+?>
 </head>
 
     <header>
@@ -130,79 +154,59 @@
                 </div>
             
                 <?php
-                $currentUser = $_SESSION['Members_Id'];
-                $sql = "SELECT * FROM members WHERE Members_Id = $currentUser";
-                $results = $conn->query($sql);
-                
-                if($results){
-                    if(mysqli_num_rows($results)>0){
-                        while($rows = mysqli_fetch_array($results)){
-                            //print_r($rows['Name']);
-                            ?>
-                            <label for="Name" style= padding-left:50px; >Name</label>
-                             <div>
-                            <input type="text" value="<?php echo $rows['Name']?>" name="Name"   required>
-                            </div>
-                            
-                            <label for="email" style= padding-left:50px; >Email</label>
-                            <div>
-                            <input type="text" value="<?php echo $rows['email']?>" name="email" required>
-                            </div>
-                            
-                            <label for="password" style= padding-left:50px; >Password</label>
-                            <div>
-                            <input type="password" value="" name="password" required>
-                            </div>
-                            
-                            <label for="Address" style= padding-left:50px; >Address</label>
-                            <div>
-                            <input type="text" value="<?php echo $rows['address']?>" name="Address" required>
-                            </div>
-                            
-                            <div>
-                            <input type="submit" placeholder="Update" Name="Update">
-                            </div>
-                <?php
-                            if(isset($_POST['Update']))
-                                {
-                                //Taking all 4 values from the form data(input)
-                                $name = $_POST['Name'];
-                                $email = $_POST['email'];
-                                $unHashedPassword = $_POST['password'];
-                                $password = password_hash($unHashedPassword, PASSWORD_DEFAULT);
-                                $address = $_POST['Address'];
-                                        
-                                // Performing insert query execution
-                                // (Name, email, password, address)
-                                        
-                                $sql = "UPDATE members SET Name = '$name', email= '$email', password='$password', Address='$address'
-                                        WHERE Members_Id = $currentUser";
-                                    
-                                if(mysqli_query($conn, $sql))
-                                    {
-                                        echo "<p>Status Updated</p>";
-                                    } 
-                                    else
-                                    {
-                                        echo "ERROR:" .mysqli_error($conn);
-                                    }
-                                    mysqli_close($conn);
-                                }                       
-                        }                  
-                    }
-                    else
-                    {
-                    header("Location: signup.php");
-                    exit();
-                    }
-                
-                }       
+                    if(isset($_SESSION['Members_Id'])){
+                        $currentUser = $_SESSION['Members_Id'];
+                        $sql = "SELECT * FROM members WHERE Members_Id = $currentUser";
+                        $results = $conn->query($sql);
 
-    
-		?>
-               
+                    
+                        if($results){
+                            if(mysqli_num_rows($results)>0){
+                                while($rows = mysqli_fetch_array($results)){
+                                    //print_r($rows['Name']);
+                                    ?>
+                                    <label for="Name" style= padding-left:50px; >Name</label>
+                                    <div>
+                                        <input type="text" value="<?php echo $rows['Name']?>" name="Name"   required>
+                                    </div>
+                                
+                                    <label for="email" style= padding-left:50px; >Email</label>
+                                    <div>
+                                        <input type="text" value="<?php echo $rows['email']?>" name="email" required>
+                                    </div>
+                                
+                                    <label for="password" style= padding-left:50px; >Password</label>
+                                    <div>
+                                        <input type="password" value="" name="password" required>
+                                    </div>
+                                
+                                    <label for="Address" style= padding-left:50px; >Address</label>
+                                    <div>
+                                        <input type="text" value="<?php echo $rows['address']?>" name="Address" required>
+                                    </div>
+                                
+                                    <div>
+                                        <input type="submit" placeholder="Update" Name="Update">
+                                    </div>
+                                    <?php
+                                    if(isset($_POST['Update'])) {
+                                        echo "<h3 class='status-updated'>Status Updated</h3>";
+                                    }
+                                }                  
+                            }
+                            else {
+                                header("Location: signup.php");
+                                exit();
+                            }               
+                        }       
+
+                    } else{
+                        header("Location: login.php");
+                        exit();
+                    }
+                    
+		        ?>  
             </form>
-            </div>
         </div>
     </body>
     <footer>

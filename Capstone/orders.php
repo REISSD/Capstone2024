@@ -308,18 +308,18 @@
             echo "</div>";
         } else {
             // If there are no orders for the user
-            echo "No orders found for this user.";
+            echo "<h1 class='order-text'>No orders found for this user.</h1>";
         }
 
         // Close the database connection
         $conn->close();
-    } else {
+    } 
+    else {
         // If user is not logged in
         echo "User not logged in!";
     }
     ?>
 </body>
-
 <footer>
         <div class="footer">
             <p>© 2024, Aqua Marine.com, Inc. or its affiliates</p>

@@ -63,6 +63,8 @@ body{
     border-radius: 25px
 }
 
+
+
 /*login style*/
 .login {
     background-color: white;
@@ -239,7 +241,13 @@ input[name=Update] {
     text-align: center;
     color: white;
     background-color: rgb(15, 15, 128);
-    }
+}
+
+.status-updated {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
 
 /*signup style*/
 .signup {
@@ -388,12 +396,17 @@ footer{
 }
 
 .memberName {
-    padding: 10px;
+    margin-left: 5px;
     font-weight: bold;
     font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .comment:last-child {
     border-bottom: none; /* Remove border from last comment */
+}
+.review-content {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
 }
 
 
@@ -442,6 +455,13 @@ footer{
     flex: 1; /* Take remaining space */
 }
 
+.order-text {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 50px;
+    margin-left: 20px;
+}
+
 /* Style for product name */
 .product-name {
     font-weight: bold;
@@ -460,4 +480,28 @@ footer{
     color: #333;
     font-size: 24px; /* Increase font size */
     font-weight: bold;
+}
+
+/* Styles for cart */
+.cart-text {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 50px;
+    margin-left: 20px;
+}
+.place-order {
+    width: 327px;
+    height: 50px;
+    margin: 50px 50px 10px 50px;
+    border-radius: 5px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    background-color: rgb(15, 15, 128);
+}
+
+/* Styles for Admin */
+.admin-drop {
+    width: 30px;
+    height: 20px;
 }

@@ -213,7 +213,6 @@
 </script>
 
 </head>
-
     <header>
         <div class="header">
             <a href="index.php" class="logo navBarButton"><img src="./graphic/Logo.png" alt="Logo"></a>
@@ -297,7 +296,7 @@
 
             if ($resultFish->num_rows == 0 && $resultTanks->num_rows == 0 && $resultDecor->num_rows == 0 && $resultPlants->num_rows == 0) {
                 // show cart empty if no products in cart
-                echo "Cart is empty";
+                echo "<h1 class='cart-text'>Cart is empty</h1>";
             } else {
                 // show fish
                 if ($resultFish->num_rows > 0) {
@@ -379,7 +378,7 @@
             ?>
             <!-- Form for submitting the order -->
             <form method="post" action="orders.php">
-                <input type="submit" name="submitOrder" value="Place Order">
+                <input type="submit" name="submitOrder" class="place-order" value="Place Order">
             </form>
         </div>
     </body>

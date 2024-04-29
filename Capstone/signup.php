@@ -11,40 +11,40 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-    $(document).ready(function() {
-        // Function to perform search and update results
-        function performSearch(query) {
-            if (query.length >= 1) {
-                $.ajax({
-                    url: 'search.php',
-                    type: 'GET',
-                    data: { search: query },
-                    success: function(response) {
-                        $('#search-results').html(response);
+            $(document).ready(function() {
+            // Function to perform search and update results
+                function performSearch(query) {
+                    if (query.length >= 1) {
+                        $.ajax({
+                            url: 'search.php',
+                            type: 'GET',
+                            data: { search: query },
+                            success: function(response) {
+                                $('#search-results').html(response);
+                            }
+                        });
+                    } 
+                    else {
+                        $('#search-results').html('');
+                    }
+                }
+
+                // Listen for keyup event on search input
+                $('#search').keyup(function() {
+                    var query = $(this).val();
+                    performSearch(query);
+                });
+
+                // Prevent form submission on Enter key press
+                $('#search').keypress(function(event) {
+                    if (event.keyCode === 13) {
+                        event.preventDefault(); // Prevent default form submission behavior
                     }
                 });
-            } else {
-                $('#search-results').html('');
-            }
-        }
+            });
+        </script>
 
-        // Listen for keyup event on search input
-        $('#search').keyup(function() {
-            var query = $(this).val();
-            performSearch(query);
-        });
-
-        // Prevent form submission on Enter key press
-        $('#search').keypress(function(event) {
-            if (event.keyCode === 13) {
-                event.preventDefault(); // Prevent default form submission behavior
-            }
-        });
-    });
-</script>
-
-</head>
-
+    </head>
     <header>
         <div class="header">
             <a href="index.php" class="logo navBarButton"><img src="./graphic/Logo.png" alt="Logo"></a>
@@ -120,31 +120,29 @@
     </header>
     <body>
     <div class="signup">
-    <form method="POST" action="insert.php">
+        <form method="POST" action="insert.php">
             <div>
-                    <h1 class="login-text">Hello! New to Aqua Marine?</h1>
-                    <h3 class="login-text">Register Here.</h3>
-                </div>
-                    <input type="text" placeholder="Name" name="name" required>
-                <div>
-                    <input type="text" placeholder="Email" name="email" required>
-                </div>
-                <div>
-                    <input type="password" class="form-control" placeholder="Password" name="password" required>
-                </div>
-                <div>
-                    <input type="text" placeholder="address" name="address" required>
-                </div>
-                <div>
-                    <input type="submit" placeholder="Submit" name="submit">
-                </div>
-            </form>
-                <div>
-                <h3 class="login-text">Already a member? <a href="login.php">Login here</a></h3>
-                </div>
-        </div>
-    
-    </div>
+                <h1 class="login-text">Hello! New to Aqua Marine?</h1>
+                <h3 class="login-text">Register Here.</h3>
+            </div>
+            <input type="text" placeholder="Name" name="name" required>
+            <div>
+                <input type="text" placeholder="Email" name="email" required>
+            </div>
+            <div>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+            </div>
+            <div>
+                <input type="text" placeholder="address" name="address" required>
+            </div>
+            <div>
+                <input type="submit" placeholder="Submit" name="submit">
+            </div>
+        </form>
+        <div>
+            <h3 class="login-text">Already a member? <a href="login.php">Login here</a></h3>
+            </div>
+    </div>   
     </body>
     <footer>
         <div class="footer">

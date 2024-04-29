@@ -36,7 +36,7 @@ function generateReviewSection($productID, $productType, $conn) {
                 }
                 echo '<div class="comment">';
                 echo '<p class="memberName">' . $memberName . '</p>';
-                echo '<p>' . $row['Comments_info'] . '</p>';
+                echo '<p class="review-content">' . $row['Comments_info'] . '</p>';
                 echo '</div>';
             }
             echo '</div>';
@@ -56,8 +56,8 @@ function generateReviewSection($productID, $productType, $conn) {
     <link rel="stylesheet" type="text/css" href="style.css"/>
 
     <?php
-    session_start();
-    //db
+        session_start();
+        //db
         include("db_connection.php");
         $conn = OpenCon();
         
@@ -74,9 +74,9 @@ function generateReviewSection($productID, $productType, $conn) {
                 if (!empty($_POST['fishID'])) {
                     $productType = 'fish';
                     $productID = intval($_POST['fishID']);
-                } elseif (!empty($_POST['heaterID'])) {
-                    $productType = 'heater';
-                    $productID = intval($_POST['heaterID']);
+                } elseif (!empty($_POST['decorID'])) {
+                    $productType = 'decor';
+                    $productID = intval($_POST['decorID']);
                 } elseif (!empty($_POST['plantID'])) {
                     $productType = 'plant';
                     $productID = intval($_POST['plantID']);
@@ -100,7 +100,8 @@ function generateReviewSection($productID, $productType, $conn) {
                 }
                 $stmt->close();
                 
-            } else {
+            } 
+            else {
                 // Redirect the user to the login page
                 header("Location: login.php");
                 exit();
@@ -121,7 +122,8 @@ function generateReviewSection($productID, $productType, $conn) {
                         $('#search-results').html(response);
                     }
                 });
-            } else {
+            } 
+            else {
                 $('#search-results').html('');
             }
         }
@@ -166,7 +168,8 @@ function generateReviewSection($productID, $productType, $conn) {
                                 // User is an admin, show admin link
                                 echo '<a href="admin.php">AdminPage</a>';
                             }
-                        } else {
+                        } 
+                        else {
                             echo "Error retrieving user data.";
                         }
                     }
@@ -180,37 +183,40 @@ function generateReviewSection($productID, $productType, $conn) {
                 <a href="products.php" class="navBarButton">Products</a>
                 <a href="aboutus.php" class="navBarButton">About Us</a>
                 <?php
-                // Check if user is logged in
-                if(isset($_SESSION['Members_Id'])) {
-                    echo '<a href="logout.php" class="navBarButton">Logout</a>'; // Show logout button
-                } else {
-                    echo '<a href="signup.php" class="navBarButton">Signup</a>';
-                    echo '<a href="login.php" class="navBarButton">Login</a>';
-                }
+                    // Check if user is logged in
+                    if(isset($_SESSION['Members_Id'])) {
+                        echo '<a href="logout.php" class="navBarButton">Logout</a>'; // Show logout button
+                    } 
+                    else {
+                        echo '<a href="signup.php" class="navBarButton">Signup</a>';
+                        echo '<a href="login.php" class="navBarButton">Login</a>';
+                    }
                 ?>
                 <a href="orders.php" class="navBarButton">Orders</a>
                 <?php
-                // Check if user is logged in
-                if(isset($_SESSION['Members_Id'])) {
-                    $membersID = $_SESSION['Members_Id'];
-                    $cartCountQuery = "SELECT COUNT(*) AS cartCount FROM cart WHERE User_id = $membersID";
-                    $cartCountResult = $conn->query($cartCountQuery);
-                    if ($cartCountResult) {
-                        $cartCountRow = $cartCountResult->fetch_assoc();
-                        $cartCount = $cartCountRow['cartCount'];
-                        // Output the cart link with the number of items in parentheses
-                        echo "<a href='cart.php' class='navBarButton'>Cart";
-                        if ($cartCount > 0) {
-                            echo " ($cartCount)";
+                    // Check if user is logged in
+                    if(isset($_SESSION['Members_Id'])) {
+                        $membersID = $_SESSION['Members_Id'];
+                        $cartCountQuery = "SELECT COUNT(*) AS cartCount FROM cart WHERE User_id = $membersID";
+                        $cartCountResult = $conn->query($cartCountQuery);
+                        if ($cartCountResult) {
+                            $cartCountRow = $cartCountResult->fetch_assoc();
+                            $cartCount = $cartCountRow['cartCount'];
+                            // Output the cart link with the number of items in parentheses
+                            echo "<a href='cart.php' class='navBarButton'>Cart";
+                            if ($cartCount > 0) {
+                                echo " ($cartCount)";
+                            }
+                            echo "</a>";
+                        } 
+                        else {
+                            // Handle error if needed
+                            echo "Error retrieving cart count.";
                         }
-                        echo "</a>";
-                    } else {
-                        // Handle error if needed
-                        echo "Error retrieving cart count.";
+                    } 
+                    else {
+                        echo '<a href="cart.php" class="navBarButton">Cart</a>';
                     }
-                } else {
-                    echo '<a href="cart.php" class="navBarButton">Cart</a>';
-                }
                 ?>
                 <a href="profile.php" class="navBarButton">Profile</a>
             </div>
@@ -247,11 +253,12 @@ function generateReviewSection($productID, $productType, $conn) {
                                 </div>
                                 <button type='submit' class='addToCart'>Add to Cart</button>
                             </form></div></div>
-        </div>";
+                        </div>";
                     }
                     $productType = "fish";
                     generateReviewSection($fishID, $productType, $conn);
-                } else {
+                } 
+                else {
                     // do nothing
                 }
 
@@ -280,11 +287,12 @@ function generateReviewSection($productID, $productType, $conn) {
                                 </div>
                                 <button type='submit' class='addToCart'>Add to Cart</button>
                             </form></div></div>
-        </div>";
+                        </div>";
                     }
                     $productType = "tank";
                     generateReviewSection($tankID, $productType, $conn);
-                } else {
+                } 
+                else {
                     // do nothing
                 }
 
@@ -312,11 +320,12 @@ function generateReviewSection($productID, $productType, $conn) {
                                 </div>
                                 <button type='submit' class='addToCart'>Add to Cart</button>
                             </form></div></div>
-        </div>";
+                        </div>";
                     }
                     $productType = "decor";
                     generateReviewSection($decorID, $productType, $conn);
-                } else {
+                } 
+                else {
                     // do nothing
                 }
 
@@ -344,37 +353,35 @@ function generateReviewSection($productID, $productType, $conn) {
                                 </div>
                                 <button type='submit' class='addToCart'>Add to Cart</button>
                             </form></div></div>
-        </div>";
+                        </div>";
                     }
                     $productType = "plant";
                     generateReviewSection($plantID, $productType, $conn);
-                } else {
+                } 
+                else {
                     // do nothing
-                }
-                
-            ?>
-            
-        
+                }       
+            ?>            
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const minusButton = document.querySelector('.quantity-minus');
+                    const plusButton = document.querySelector('.quantity-plus');
+                    const quantityInput = document.getElementById('quantity');
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const minusButton = document.querySelector('.quantity-minus');
-                const plusButton = document.querySelector('.quantity-plus');
-                const quantityInput = document.getElementById('quantity');
+                    minusButton.addEventListener('click', function() {
+                        const currentValue = parseInt(quantityInput.value);
+                        if (currentValue > 1) {
+                            quantityInput.value = currentValue - 1;
+                        }
+                    });
 
-                minusButton.addEventListener('click', function() {
-                    const currentValue = parseInt(quantityInput.value);
-                    if (currentValue > 1) {
-                        quantityInput.value = currentValue - 1;
-                    }
+                    plusButton.addEventListener('click', function() {
+                        const currentValue = parseInt(quantityInput.value);
+                        quantityInput.value = currentValue + 1;
+                    });
                 });
-
-                plusButton.addEventListener('click', function() {
-                    const currentValue = parseInt(quantityInput.value);
-                    quantityInput.value = currentValue + 1;
-                });
-            });
-        </script>
+            </script>
+        </div>
     </body>
     <footer>
         <div class="footer">
