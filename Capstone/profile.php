@@ -1,7 +1,7 @@
 <?php
     include 'db_connection.php';
     $conn = OpenCon();
-    echo "Connected Successfully";
+    //echo "Connected Successfully";
 ?>
 
  <?php session_start(); ?>
@@ -13,12 +13,11 @@
         <title>Capstone</title>
         <link rel="stylesheet" type="text/css" href="style.css"/>      
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
+        <script>
     $(document).ready(function() {
-        $('#search').keyup(function() {
-            var query = $(this).val();
-
-            if(query.length >= 1) {
+        // Function to perform search and update results
+        function performSearch(query) {
+            if (query.length >= 1) {
                 $.ajax({
                     url: 'search.php',
                     type: 'GET',
@@ -29,6 +28,19 @@
                 });
             } else {
                 $('#search-results').html('');
+            }
+        }
+
+        // Listen for keyup event on search input
+        $('#search').keyup(function() {
+            var query = $(this).val();
+            performSearch(query);
+        });
+
+        // Prevent form submission on Enter key press
+        $('#search').keypress(function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission behavior
             }
         });
     });
@@ -127,22 +139,26 @@
                         while($rows = mysqli_fetch_array($results)){
                             //print_r($rows['Name']);
                             ?>
+                            <label for="Name" style= padding-left:50px; >Name</label>
                              <div>
                             <input type="text" value="<?php echo $rows['Name']?>" name="Name"   required>
                             </div>
-                            <label for="Name" style= padding-left:50px; >Name</label>
+                            
+                            <label for="email" style= padding-left:50px; >Email</label>
                             <div>
                             <input type="text" value="<?php echo $rows['email']?>" name="email" required>
                             </div>
-                            <label for="email" style= padding-left:50px; >Email</label>
+                            
+                            <label for="password" style= padding-left:50px; >Password</label>
                             <div>
                             <input type="password" value="" name="password" required>
                             </div>
-                            <label for="password" style= padding-left:50px; >Password</label>
+                            
+                            <label for="Address" style= padding-left:50px; >Address</label>
                             <div>
                             <input type="text" value="<?php echo $rows['address']?>" name="Address" required>
                             </div>
-                            <label for="Address" style= padding-left:50px; >Address</label>
+                            
                             <div>
                             <input type="submit" placeholder="Update" Name="Update">
                             </div>
@@ -164,8 +180,7 @@
                                     
                                 if(mysqli_query($conn, $sql))
                                     {
-                                        echo "<script>alert('record updated')</script>"; 
-                                        echo "<script>window.open('profile.php','_self')</script>";
+                                        echo "<p>Status Updated</p>";
                                     } 
                                     else
                                     {

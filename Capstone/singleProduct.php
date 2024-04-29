@@ -110,10 +110,9 @@ function generateReviewSection($productID, $productType, $conn) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
-        $('#search').keyup(function() {
-            var query = $(this).val();
-
-            if(query.length >= 1) {
+        // Function to perform search and update results
+        function performSearch(query) {
+            if (query.length >= 1) {
                 $.ajax({
                     url: 'search.php',
                     type: 'GET',
@@ -124,6 +123,19 @@ function generateReviewSection($productID, $productType, $conn) {
                 });
             } else {
                 $('#search-results').html('');
+            }
+        }
+
+        // Listen for keyup event on search input
+        $('#search').keyup(function() {
+            var query = $(this).val();
+            performSearch(query);
+        });
+
+        // Prevent form submission on Enter key press
+        $('#search').keypress(function(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission behavior
             }
         });
     });
