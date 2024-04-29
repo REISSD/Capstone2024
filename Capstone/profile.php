@@ -4,7 +4,7 @@
     //echo "Connected Successfully";
 ?>
 
- <?php session_start(); ?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,7 +98,14 @@
                         } else {
                             echo "Error retrieving user data.";
                         }
+                    } else {
+                        header("Location: signup.php");
                     }
+                        
+                    
+                        
+                        
+                    
                 ?>
                 <form action="search.php" method="GET">
                     <input type="text" placeholder="Search" name="search" id="search">
